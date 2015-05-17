@@ -1,4 +1,4 @@
-# react-speech <img src="logo.png" style="padding:6px"" align="right">
+# react-speech <img src="https://github.com/AndrewKeig/react-speech/blob/master/logo.png" style="padding:6px"" align="right">
 
 React component for the [Web Speech](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html) api. 
 
@@ -75,7 +75,7 @@ pitch | `Number` | 1 | no | This attribute specifies the speaking pitch for the 
 rate | `Number` | 1 | no | This attribute specifies the speaking rate for the utterance. `max=3.5 min=0.5 step=0.5`
 volume | `Number` | 1 | no | This attribute specifies the speaking volume for the utterance. `max=1 min=0 step=0.1`
 lang | `String` | `en-GB` | no | This attribute specifies the language of the speech synthesis for the utterance. `EN-GB`, `EN-US`|
-voice | `String` | `Daniel` | no | [Supported voices](#supportedvoice) |
+voice | `String` | `Daniel` | no | Check supported voices for your browser.|
 
 
 ### Styles
