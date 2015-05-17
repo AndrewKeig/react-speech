@@ -1,0 +1,64 @@
+{
+  "name": "react-speech",
+  "version": "0.1.0",
+  "description": "React component for the web speech synthesis api",
+  "author": {
+    "name": "Andrew Keig",
+    "email": "andrew.keig@gmail.com",
+    "url": "http://github.com/andrewkeig"
+  },
+  "main": "dist/react-speech.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --compilers js:babel/register --recursive --require test/setup.js",
+    "lint": "eslint ./src",
+    "start": "npm run lint && node index.js",
+    "dist": "./node_modules/.bin/webpack --progress --colors --config webpack/dist.config.js",
+    "dist.min": "./node_modules/.bin/webpack --progress --colors --optimize-minimize --optimize-occurence-order --optimize-dedupe --config webpack/dist.config.min.js",
+    "build": "npm run dist && npm run dist.min"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewkeig/react-speech.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andrewkeig/react-speech/issues"
+  },
+  "homepage": "https://github.com/andrewkeig/react-speech",
+  "peerDependencies": {
+    "react": ">=0.13"
+  },
+  "dependencies": {
+    "object-assign": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel": "^5.2.15",
+    "babel-core": "^5.1.11",
+    "babel-eslint": "^3.0.1",
+    "babel-loader": "^5.0.0",
+    "chai": "^2.3.0",
+    "eslint": "^0.20.0",
+    "eslint-loader": "^0.11.1",
+    "eslint-plugin-react": "^2.2.0",
+    "jsdom": "^3.1.2",
+    "jsx-loader": "^0.13.2",
+    "mocha": "^2.2.4",
+    "react-hot-loader": "^1.2.2",
+    "react-tools": "^0.13.3",
+    "webpack": "^1.7.2",
+    "webpack-dev-server": "^1.7.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/andrewkeig/react-speech/raw/master/LICENSE"
+    }
+  ],
+  "keywords": [
+    "react",
+    "reactjs",
+    "speech",
+    "audio",
+    "react-component",
+    "component"
+  ]
+}
