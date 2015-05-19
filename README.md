@@ -6,8 +6,7 @@ The Web Speech API aims to enable web developers to provide, in a web browser, `
 
 The Web Speech API comes in two parts,  [speech synthesis](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section) and [speech recognition](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechreco-section). This react component supports `speech synthesis`, `text-to-speech`.
 
-
-![Git release](http://img.shields.io/github/release/andrewkeig/react-speech.svg?style=flat) ![Travis](http://img.shields.io/travis/andrewkeig/react-speech.svg?style=flat) ![license](http://img.shields.io/npm/l/react-speech.svg?style=flat)
+![build]https://travis-ci.org/AndrewKeig/react-speech.svg)
 
 
 `react-speech` depends on React.js 0.13.x (or higher).
