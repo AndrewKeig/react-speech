@@ -1,6 +1,6 @@
 var assign = require('object-assign');
 var React = require('react');
-var Button = require('./Button');
+var Button = require('./button');
 var style = require('./style');
 var SpeechSynthesis = require('./speechSynthesis');
 

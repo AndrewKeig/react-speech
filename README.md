@@ -9,8 +9,6 @@ The Web Speech API comes in two parts,  [speech synthesis](https://dvcs.w3.org/h
 ![build](https://travis-ci.org/AndrewKeig/react-speech.svg)
 
 
-`react-speech` depends on React.js 0.13.x (or higher).
-
 ## Install
 
 In order to install `react-speech`, simply run
@@ -24,6 +22,7 @@ $ npm install react-speech --save
 Using `react-speech`, is pretty simple, simply `React.render` the speech component, setting the `text` property, which is rendered to speech.
 
 ```
+  import React from 'react';
   import Speech from './speech';
 
   React.render(
@@ -69,7 +68,7 @@ Property | Type | Default | Required | Description
 -------- | ---- | ------- | -------- |-----------
 styles | `Object` | [Styles](#Styles) | no | see [Styles](#styles)
 autostart | `Bool` | false | no | Start speech on page load.
-text | `String` | none | yes | This attribute specifies the text to be synthesized and spoken for this utterance. Max `250` characters. See [Issues with long text](#issueswithlongtext)
+text | `String` | none | yes | This attribute specifies the text to be synthesized and spoken for this utterance. Max `250` characters. See [Issues with long text](#user-content-issues-with-long-text)
 pitch | `Number` | 1 | no | This attribute specifies the speaking pitch for the utterance. `min=0 max=2 step=1`
 rate | `Number` | 1 | no | This attribute specifies the speaking rate for the utterance. `max=3.5 min=0.5 step=0.5`
 volume | `Number` | 1 | no | This attribute specifies the speaking volume for the utterance. `max=1 min=0 step=0.1`
