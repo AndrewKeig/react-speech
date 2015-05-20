@@ -155,35 +155,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function() {
 	    if (!SpeechSynthesis.supported()) {
 	      return (
-	        React.createElement("div", {className: "container", style: this.state.styles.container}, 
-	          React.createElement("div", {className: "text", style: this.state.styles.text}, this.props.text)
+	        React.createElement("div", {className: "rs-container", style: this.state.styles.container}, 
+	          React.createElement("div", {className: "rs-text", style: this.state.styles.text}, this.props.text)
 	        )
 	      );
 	    }
 
 	    return (
-	      React.createElement("div", {className: "container", style: this.state.styles.container}, 
-	        React.createElement("div", {className: "text", style: this.state.styles.text}, this.props.text), 
-	        React.createElement("div", {className: "buttons", style: this.state.styles.buttons}, 
-	          React.createElement(Button, {className: "play", styles: this.state.styles.play, onClick: this.play}, 
+	      React.createElement("div", {className: "rs-container", style: this.state.styles.container}, 
+	        React.createElement("div", {className: "rs-text", style: this.state.styles.text}, this.props.text), 
+	        React.createElement("div", {className: "rs-buttons", style: this.state.styles.buttons}, 
+	          React.createElement(Button, {className: "rs-play", styles: this.state.styles.play, onClick: this.play}, 
 	            React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24"}, 
 	                React.createElement("path", {d: "M8 5v14l11-7z"}), 
 	                React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"})
 	            )
 	          ), 
-	          React.createElement(Button, {className: "stop", styles: this.state.styles.stop, onClick: this.stop}, 
+	          React.createElement(Button, {className: "rs-stop", styles: this.state.styles.stop, onClick: this.stop}, 
 	            React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24"}, 
 	                React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"}), 
 	                React.createElement("path", {d: "M6 6h12v12H6z"})
 	            )
 	          ), 
-	          React.createElement(Button, {className: "pause", styles: this.state.styles.pause, onClick: this.pause}, 
+	          React.createElement(Button, {className: "rs-pause", styles: this.state.styles.pause, onClick: this.pause}, 
 	            React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24"}, 
 	                React.createElement("path", {d: "M6 19h4V5H6v14zm8-14v14h4V5h-4z"}), 
 	                React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"})
 	            )
 	          ), 
-	          React.createElement(Button, {className: "resume", styles: this.state.styles.resume, onClick: this.resume}, 
+	          React.createElement(Button, {className: "rs-resume", styles: this.state.styles.resume, onClick: this.resume}, 
 	            React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24"}, 
 	                React.createElement("path", {d: "M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"}), 
 	                React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"})
