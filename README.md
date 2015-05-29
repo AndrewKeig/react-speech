@@ -74,7 +74,7 @@ rate | `Number` | 1 | no | This attribute specifies the speaking rate for the ut
 volume | `Number` | 1 | no | This attribute specifies the speaking volume for the utterance. `max=1 min=0 step=0.1`
 lang | `String` | `en-GB` | no | This attribute specifies the language of the speech synthesis for the utterance. `EN-GB`, `EN-US`|
 voice | `String` | `Daniel` | no | Check supported voices for your browser.|
-
+textAsButton | `Bool`| false | no | Display the text as a button.|
 
 ### Styles
 
@@ -198,7 +198,7 @@ let hideText = {
   
 ```
 
-
+#### Altered my voice
 
 ```
 <Speech 
@@ -244,18 +244,92 @@ let style = {
   voice="Google UK English Male" />
 ```
 
-#### Hide pause, stop and resume
+#### Display pause, stop and resume
 
 ```
-let hide = {
-  pause: { button: { display: 'none' } },
-  resume: { button: { display: 'none' } },
-  stop: { button: { display: 'none' } }
+let style = {
+  play: {
+    button: {
+      width: '28',
+      height: '28',
+      cursor: 'pointer',
+      pointerEvents: 'none',
+      outline: 'none',
+      backgroundColor: 'yellow',
+      border: 'solid 1px rgba(255,255,255,1)',
+      borderRadius: 6
+    },
+  },
+  stop: {
+    button: {
+      width: '28',
+      height: '28',
+      cursor: 'pointer',
+      pointerEvents: 'none',
+      outline: 'none',
+      backgroundColor: 'aqua',
+      border: 'solid 1px rgba(255,255,255,1)',
+      borderRadius: 6
+    }
+  },
+  pause: {
+    button: {
+      width: '28',
+      height: '28',
+      cursor: 'pointer',
+      pointerEvents: 'none',
+      outline: 'none',
+      backgroundColor: 'red',
+      border: 'solid 1px rgba(255,255,255,1)',
+      borderRadius: 6
+    }
+  },
+  resume: {
+    button: {
+      width: '28',
+      height: '28',
+      cursor: 'pointer',
+      pointerEvents: 'none',
+      outline: 'none',
+      backgroundColor: 'orange',
+      border: 'solid 1px rgba(255,255,255,1)',
+      borderRadius: 6
+    }
+  }
 };
 
 <Speech 
-  styles={hide} 
-  text="I have hidden my buttons" />
+  styles={style} 
+  text="I have enabled the stop start and pause buttons, changed their colour and made them smaller" />
+
+```
+
+#### Display text as a button
+
+```
+
+let textstyle = {
+  play: {
+    hover: {
+      backgroundColor: 'black',
+      color:'white'
+    },
+    button: {
+      padding:'4',
+      fontFamily: 'Helvetica',
+      fontSize: '1.0em',
+      cursor: 'pointer',
+      pointerEvents: 'none',
+      outline: 'none',
+      backgroundColor: 'inherit',
+      border: 'none'
+    },
+  }
+};
+
+<Speech styles={textstyle} 
+  textAsButton={true} 
+  text="I have my text string displayed as a button" />
 
 ```
 
