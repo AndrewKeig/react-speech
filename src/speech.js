@@ -16,7 +16,8 @@ var Speech = React.createClass({
     volume: React.PropTypes.string,
     lang: React.PropTypes.string,
     voiceURI: React.PropTypes.string,
-    voice: React.PropTypes.string
+    voice: React.PropTypes.string,
+    textAsButton: React.PropTypes.bool
   },
 
   getInitialState: function(props){
