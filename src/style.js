@@ -1,22 +1,20 @@
 module.exports = {
   container: {
-    width: '500',
-    marginBottom: '10'
+    width: '100%'
   },
   text: {
-    width: '500',
-    display: '',
-    fontFamily: 'arial',
-    marginBottom: '10'
+    width: '100%',
+    display: ''
   },
   buttons: {
-    marginRight: '10'
   },
   play: {
     hover: {
       backgroundColor: 'GhostWhite'
     },
     button: {
+      width: '34',
+      height: '34',
       cursor: 'pointer',
       pointerEvents: 'none',
       outline: 'none',
@@ -30,12 +28,15 @@ module.exports = {
       backgroundColor: 'GhostWhite'
     },
     button: {
+      width: '34',
+      height: '34',
       cursor: 'pointer',
       pointerEvents: 'none',
       outline: 'none',
       backgroundColor: 'Gainsboro',
       border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6
+      borderRadius: 6,
+      display: 'none'
     }
   },
   pause: {
@@ -43,12 +44,15 @@ module.exports = {
       backgroundColor: 'GhostWhite'
     },
     button: {
+      width: '34',
+      height: '34',
       cursor: 'pointer',
       pointerEvents: 'none',
       outline: 'none',
       backgroundColor: 'Gainsboro',
       border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6
+      borderRadius: 6,
+      display: 'none'
     }
   },
   resume: {
@@ -56,12 +60,15 @@ module.exports = {
       backgroundColor: 'GhostWhite'
     },
     button: {
+      width: '34',
+      height: '34',
       cursor: 'pointer',
       pointerEvents: 'none',
       outline: 'none',
       backgroundColor: 'Gainsboro',
       border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6
+      borderRadius: 6,
+      display: 'none'
     }
   }
 };

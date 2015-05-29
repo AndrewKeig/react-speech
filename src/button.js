@@ -15,7 +15,12 @@ var Button = React.createClass({
   },
 
   componentDidMount: function() {
-    this.setState({ focus: false, hover: false, backgroundColor: this.props.styles.button.backgroundColor });
+    this.setState({
+      focus: false,
+      hover: false,
+      color: this.props.styles.button.Color,
+      backgroundColor: this.props.styles.button.backgroundColor
+    });
   },
 
   enter: function() {
@@ -29,7 +34,8 @@ var Button = React.createClass({
   render: function() {
     var style = {};
     var backgroundColor = this.state.hover ? this.props.styles.hover.backgroundColor : this.state.backgroundColor;
-    assign(style, this.props.styles.button, { backgroundColor: backgroundColor });
+    var color = this.state.hover ? this.props.styles.hover.color : this.state.color;
+    assign(style, this.props.styles.button, { color: color, backgroundColor: backgroundColor });
 
     return (
       <button {...this.props} style={style}

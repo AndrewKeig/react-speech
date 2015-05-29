@@ -4,6 +4,8 @@ import Speech from './src/speech';
 let style = {
   play: {
     button: {
+      width: '28',
+      height: '28',
       cursor: 'pointer',
       pointerEvents: 'none',
       outline: 'none',
@@ -14,6 +16,8 @@ let style = {
   },
   stop: {
     button: {
+      width: '28',
+      height: '28',
       cursor: 'pointer',
       pointerEvents: 'none',
       outline: 'none',
@@ -24,6 +28,8 @@ let style = {
   },
   pause: {
     button: {
+      width: '28',
+      height: '28',
       cursor: 'pointer',
       pointerEvents: 'none',
       outline: 'none',
@@ -34,6 +40,8 @@ let style = {
   },
   resume: {
     button: {
+      width: '28',
+      height: '28',
       cursor: 'pointer',
       pointerEvents: 'none',
       outline: 'none',
@@ -44,25 +52,37 @@ let style = {
   }
 };
 
-let hide = {
-  pause: { button: { display: 'none' } },
-  resume: { button: { display: 'none' } },
-  stop: { button: { display: 'none' } }
-};
-
 let hideText = {
   text: { display: 'none' }
 };
 
+let textstyle = {
+  play: {
+    hover: {
+      backgroundColor: 'black',
+      color:'white'
+    },
+    button: {
+      padding:'4',
+      fontFamily: 'Helvetica',
+      fontSize: '1.0em',
+      cursor: 'pointer',
+      pointerEvents: 'none',
+      outline: 'none',
+      backgroundColor: 'inherit',
+      border: 'none'
+    },
+  }
+};
 
 React.render(<div>
-  <Speech styles={style} autostart={true} text="I have the default settings with autostart set to true" />
+  <Speech autostart={true} text="I have the default settings with autostart set to true" />
 
   <Speech text="I have the default settings" />
 
   <Speech text="I have altered my voice" voice="Google UK English Female" />
 
-  <Speech styles={style} text="I have altered the colour of my buttons" />
+  <Speech styles={style} text="I have enabled the stop start and pause buttons, changed their colour and made them smaller" />
 
   <Speech
   autostart={false}
@@ -75,15 +95,14 @@ React.render(<div>
 
   <Speech
   autostart={false}
-  text="I have all properties set to their default"
+  text="I have set all properties to their default"
   pitch="1"
   rate="1"
   volume="1"
   lang="en-GB"
   voice="Google UK English Male" />
 
-  <Speech styles={hide} text="I have hidden my, stop, pause and resume buttons" />
-
+  <Speech styles={textstyle} textAsButton={true} text="I have my text string displayed as a button" />
 
   <Speech styles={hideText} text="I have hidden the text string" />
 
