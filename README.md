@@ -169,6 +169,7 @@ Here are some examples of using `react-speech`
 
 #### Default settings
 
+
 ```
 <Speech 
   text="I have the default settings" />
@@ -177,6 +178,7 @@ Here are some examples of using `react-speech`
 
 
 #### Autostart speech
+
 
 ```
 <Speech 
@@ -187,6 +189,7 @@ Here are some examples of using `react-speech`
 
 
 #### Hidden text string
+
 
 ```
 let hideText = {
@@ -200,6 +203,7 @@ let hideText = {
 
 #### Altered my voice
 
+
 ```
 <Speech 
   text="I have altered my voice" 
@@ -207,6 +211,7 @@ let hideText = {
 ```
 
 #### Set button colour
+
 
 ```
 let style = {
@@ -219,6 +224,7 @@ let style = {
 ```
 
 #### Set pitch, rate and volume
+
 
 ```
 <Speech
@@ -233,6 +239,7 @@ let style = {
 
 #### Set default properties
 
+
 ```
 <Speech
   autostart={false}
@@ -245,6 +252,7 @@ let style = {
 ```
 
 #### Display pause, stop and resume
+
 
 ```
 let style = {
@@ -305,6 +313,7 @@ let style = {
 ```
 
 #### Display text as a button
+
 
 ```
 
