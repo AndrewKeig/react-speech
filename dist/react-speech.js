@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    lang: React.PropTypes.string,
 	    voiceURI: React.PropTypes.string,
 	    voice: React.PropTypes.string,
-	    textAsButton: React.PropTypes.bool
+	    textAsButton: React.PropTypes.string
 	  },
 
 	  getInitialState: function(props){
@@ -156,18 +156,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function() {
 	    if (!SpeechSynthesis.supported()) {
 	      return (
-	        React.createElement("div", {className: "rs-container", style: this.state.styles.container}, 
-	          React.createElement("div", {className: "rs-text", style: this.state.styles.text}, this.props.text)
+	        React.createElement("span", {className: "rs-container", style: this.state.styles.container}, 
+	          React.createElement("span", {className: "rs-text", style: this.state.styles.text}, this.props.text)
 	        )
 	      );
 	    }
 
 	    if (this.props.textAsButton) {
 	      return (
-	        React.createElement("div", {className: "rs-container", style: this.state.styles.container}, 
-	            React.createElement(Button, {className: "rs-play", styles: this.state.styles.play, onClick: this.play}, 
-	              React.createElement("div", {className: "rs-text", style: this.state.styles.text}, this.props.text)
-	            )
+	        React.createElement(Button, {className: "rs-play", styles: this.state.styles.play, onClick: this.play}, 
+	          React.createElement("span", {className: "rs-text", style: this.state.styles.text}, this.props.textAsButton)
 	        )
 	      );
 	    }
