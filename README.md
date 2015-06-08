@@ -74,7 +74,7 @@ rate | `Number` | 1 | no | This attribute specifies the speaking rate for the ut
 volume | `Number` | 1 | no | This attribute specifies the speaking volume for the utterance. `max=1 min=0 step=0.1`
 lang | `String` | `en-GB` | no | This attribute specifies the language of the speech synthesis for the utterance. `EN-GB`, `EN-US`|
 voice | `String` | `Daniel` | no | Check supported voices for your browser.|
-textAsButton | `Bool`| false | no | Display the text as a button.|
+textAsButton | `string`| no | no | Display text as a button.|
 
 ### Styles
 

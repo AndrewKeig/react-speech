@@ -102,7 +102,7 @@ React.render(<div>
   lang="en-GB"
   voice="Google UK English Male" />
 
-  <Speech styles={textstyle} textAsButton={true} text="I have my text string displayed as a button" />
+  <Speech styles={textstyle} textAsButton={'help'} text="I have text displayed as a button" />
 
   <Speech styles={hideText} text="I have hidden the text string" />
 

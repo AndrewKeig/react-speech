@@ -17,7 +17,7 @@ var Speech = React.createClass({
     lang: React.PropTypes.string,
     voiceURI: React.PropTypes.string,
     voice: React.PropTypes.string,
-    textAsButton: React.PropTypes.bool
+    textAsButton: React.PropTypes.string
   },
 
   getInitialState: function(props){
@@ -100,19 +100,17 @@ var Speech = React.createClass({
   render: function() {
     if (!SpeechSynthesis.supported()) {
       return (
-        <div className="rs-container" style={this.state.styles.container}>
-          <div className="rs-text" style={this.state.styles.text}>{this.props.text}</div>
-        </div>
+        <span className="rs-container" style={this.state.styles.container}>
+          <span className="rs-text" style={this.state.styles.text}>{this.props.text}</span>
+        </span>
       );
     }
 
     if (this.props.textAsButton) {
       return (
-        <div className="rs-container" style={this.state.styles.container}>
-            <Button className="rs-play" styles={this.state.styles.play} onClick={this.play} >
-              <div className="rs-text" style={this.state.styles.text}>{this.props.text}</div>
-            </Button>
-        </div>
+        <Button className="rs-play" styles={this.state.styles.play} onClick={this.play} >
+          <span className="rs-text" style={this.state.styles.text}>{this.props.textAsButton}</span>
+        </Button>
       );
     }
 
