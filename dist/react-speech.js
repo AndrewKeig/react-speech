@@ -73,7 +73,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    lang: React.PropTypes.string,
 	    voiceURI: React.PropTypes.string,
 	    voice: React.PropTypes.string,
-	    textAsButton: React.PropTypes.string
+	    textAsButton: React.PropTypes.bool,
+	    displayText: React.PropTypes.string
 	  },
 
 	  getInitialState: function(props){
@@ -162,45 +163,98 @@ return /******/ (function(modules) { // webpackBootstrap
 	      );
 	    }
 
+	    var play;
+	    var stop;
+	    var pause;
+	    var resume;
+
 	    if (this.props.textAsButton) {
-	      return (
+	      play = (
 	        React.createElement(Button, {className: "rs-play", styles: this.state.styles.play, onClick: this.play}, 
-	          React.createElement("span", {className: "rs-text", style: this.state.styles.text}, this.props.textAsButton)
+	          React.createElement("span", {className: "rs-text", style: this.state.styles.text}, this.props.displayText || this.props.text)
+	        )
+	      );
+	    } else {
+	      play = (
+	        React.createElement(Button, {className: "rs-play", styles: this.state.styles.play, onClick: this.play}, 
+	          React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: this.state.styles.play.width, height: this.state.styles.play.height, viewBox: "0 0 24 24"}, 
+	              React.createElement("path", {d: "M8 5v14l11-7z"}), 
+	              React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"})
+	          )
+	        )
+	      );
+	    }
+
+	    if (this.props.stop) {
+	      stop = (
+	        React.createElement(Button, {className: "rs-stop", styles: this.state.styles.stop, onClick: this.stop}, 
+	          React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: this.state.styles.stop.width, height: this.state.styles.stop.height, viewBox: "0 0 24 24"}, 
+	              React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"}), 
+	              React.createElement("path", {d: "M6 6h12v12H6z"})
+	          )
+	        )
+	      );
+	    }
+
+	    if (this.props.pause) {
+	      pause = (
+	        React.createElement(Button, {className: "rs-pause", styles: this.state.styles.pause, onClick: this.pause}, 
+	          React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: this.state.styles.pause.width, height: this.state.styles.pause.height, viewBox: "0 0 24 24"}, 
+	              React.createElement("path", {d: "M6 19h4V5H6v14zm8-14v14h4V5h-4z"}), 
+	              React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"})
+	          )
+	        )
+	      );
+	    }
+
+	    if (this.props.resume) {
+	      resume = (
+	        React.createElement(Button, {className: "rs-resume", styles: this.state.styles.resume, onClick: this.resume}, 
+	          React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: this.state.styles.resume.width, height: this.state.styles.resume.height, viewBox: "0 0 24 24"}, 
+	              React.createElement("path", {d: "M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"}), 
+	              React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"})
+	          )
 	        )
 	      );
 	    }
 
 	    return (
-	      React.createElement("div", {className: "rs-container", style: this.state.styles.container}, 
-	        React.createElement("div", {className: "rs-text", style: this.state.styles.text}, this.props.text), 
-	        React.createElement("div", {className: "rs-buttons", style: this.state.styles.buttons}, 
-	          React.createElement(Button, {className: "rs-play", styles: this.state.styles.play, onClick: this.play}, 
-	            React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: this.state.styles.play.width, height: this.state.styles.play.height, viewBox: "0 0 24 24"}, 
-	                React.createElement("path", {d: "M8 5v14l11-7z"}), 
-	                React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"})
-	            )
-	          ), 
-	          React.createElement(Button, {className: "rs-stop", styles: this.state.styles.stop, onClick: this.stop}, 
-	            React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: this.state.styles.stop.width, height: this.state.styles.stop.height, viewBox: "0 0 24 24"}, 
-	                React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"}), 
-	                React.createElement("path", {d: "M6 6h12v12H6z"})
-	            )
-	          ), 
-	          React.createElement(Button, {className: "rs-pause", styles: this.state.styles.pause, onClick: this.pause}, 
-	            React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: this.state.styles.pause.width, height: this.state.styles.pause.height, viewBox: "0 0 24 24"}, 
-	                React.createElement("path", {d: "M6 19h4V5H6v14zm8-14v14h4V5h-4z"}), 
-	                React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"})
-	            )
-	          ), 
-	          React.createElement(Button, {className: "rs-resume", styles: this.state.styles.resume, onClick: this.resume}, 
-	            React.createElement("svg", {xmlns: "http://www.w3.org/2000/svg", width: this.state.styles.resume.width, height: this.state.styles.resume.height, viewBox: "0 0 24 24"}, 
-	                React.createElement("path", {d: "M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"}), 
-	                React.createElement("path", {d: "M0 0h24v24H0z", fill: "none"})
-	            )
-	          )
-	        )
+	      React.createElement("span", {className: "rs-container"}, 
+	        play, " ", stop, " ", pause, " ", resume
 	      )
 	    );
+
+	    // return (
+	    //   <div className="rs-container" style={this.state.styles.container}>
+	    //     <div className="rs-text" style={this.state.styles.text}>{this.props.text}</div>
+	    //     <div className="rs-buttons" style={this.state.styles.buttons}>
+	    //       <Button className="rs-play" styles={this.state.styles.play} onClick={this.play} >
+	    //         <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.play.width} height={this.state.styles.play.height} viewBox="0 0 24 24">
+	    //             <path d="M8 5v14l11-7z"/>
+	    //             <path d="M0 0h24v24H0z" fill="none"/>
+	    //         </svg>
+	    //       </Button>
+	    //       <Button className="rs-stop" styles={this.state.styles.stop} onClick={this.stop}>
+	    //         <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.stop.width} height={this.state.styles.stop.height} viewBox="0 0 24 24">
+	    //             <path d="M0 0h24v24H0z" fill="none"/>
+	    //             <path d="M6 6h12v12H6z"/>
+	    //         </svg>
+	    //       </Button>
+	    //       <Button className="rs-pause" styles={this.state.styles.pause} onClick={this.pause} >
+	    //         <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.pause.width} height={this.state.styles.pause.height} viewBox="0 0 24 24">
+	    //             <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+	    //             <path d="M0 0h24v24H0z" fill="none"/>
+	    //         </svg>
+	    //       </Button>
+	    //       <Button className="rs-resume" styles={this.state.styles.resume} onClick={this.resume} >
+	    //         <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.resume.width} height={this.state.styles.resume.height} viewBox="0 0 24 24">
+	    //             <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/>
+	    //             <path d="M0 0h24v24H0z" fill="none"/>
+	    //         </svg>
+	    //       </Button>
+	    //     </div>
+	    //   </div>
+	    // );
 	  }
 	});
 
@@ -311,8 +365,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    width: '100%',
 	    display: ''
 	  },
-	  buttons: {
-	  },
 	  play: {
 	    hover: {
 	      backgroundColor: 'GhostWhite'
@@ -340,8 +392,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      outline: 'none',
 	      backgroundColor: 'Gainsboro',
 	      border: 'solid 1px rgba(255,255,255,1)',
-	      borderRadius: 6,
-	      display: 'none'
+	      borderRadius: 6
 	    }
 	  },
 	  pause: {
@@ -356,8 +407,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      outline: 'none',
 	      backgroundColor: 'Gainsboro',
 	      border: 'solid 1px rgba(255,255,255,1)',
-	      borderRadius: 6,
-	      display: 'none'
+	      borderRadius: 6
 	    }
 	  },
 	  resume: {
@@ -372,8 +422,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      outline: 'none',
 	      backgroundColor: 'Gainsboro',
 	      border: 'solid 1px rgba(255,255,255,1)',
-	      borderRadius: 6,
-	      display: 'none'
+	      borderRadius: 6
 	    }
 	  }
 	};

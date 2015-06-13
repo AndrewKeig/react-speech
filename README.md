@@ -73,8 +73,12 @@ pitch | `Number` | 1 | no | This attribute specifies the speaking pitch for the 
 rate | `Number` | 1 | no | This attribute specifies the speaking rate for the utterance. `max=3.5 min=0.5 step=0.5`
 volume | `Number` | 1 | no | This attribute specifies the speaking volume for the utterance. `max=1 min=0 step=0.1`
 lang | `String` | `en-GB` | no | This attribute specifies the language of the speech synthesis for the utterance. `EN-GB`, `EN-US`|
-voice | `String` | `Daniel` | no | Check supported voices for your browser.|
-textAsButton | `string`| no | no | Display text as a button.|
+voice | `String` | `Daniel` | no | A voice as a string, please check supported voices for your browser.|
+textAsButton | `bool`| no | no | Display text as a button.|
+displayText | `string`| no | no | When displaying text as a button you can use this to display a different text string.|
+stop | `bool` | false | no | Display a stop button.|
+pause | `bool` | false | no | Display a pause button.|
+resume | `bool` | false | no | Display a resume button.|
 
 ### Styles
 
@@ -187,20 +191,6 @@ Here are some examples of using `react-speech`
 
 ```
 
-
-#### Hidden text string
-
-
-```
-let hideText = {
-  text: { display: 'none' }
-};
-
-<Speech styles={hideText} 
-  text="I have hidden the text string" />
-  
-```
-
 #### Altered my voice
 
 
@@ -215,12 +205,23 @@ let hideText = {
 
 ```
 let style = {
-  play: { button: { color: 'black', backgroundColor: 'yellow' } }
+  play: {
+    button: {
+      width: '28',
+      height: '28',
+      cursor: 'pointer',
+      pointerEvents: 'none',
+      outline: 'none',
+      backgroundColor: 'yellow',
+      border: 'solid 1px rgba(255,255,255,1)',
+      borderRadius: 6
+    },
+  }
 };
 
 <Speech 
   styles={style} 
-  text="I have altered the colour of my play button" />
+  text="I have changed the colour of the play button and made it smaller" />
 ```
 
 #### Set pitch, rate and volume
@@ -251,72 +252,22 @@ let style = {
   voice="Google UK English Male" />
 ```
 
-#### Display pause, stop and resume
+#### Display pause, stop and resume buttons
 
 
 ```
-let style = {
-  play: {
-    button: {
-      width: '28',
-      height: '28',
-      cursor: 'pointer',
-      pointerEvents: 'none',
-      outline: 'none',
-      backgroundColor: 'yellow',
-      border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6
-    },
-  },
-  stop: {
-    button: {
-      width: '28',
-      height: '28',
-      cursor: 'pointer',
-      pointerEvents: 'none',
-      outline: 'none',
-      backgroundColor: 'aqua',
-      border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6
-    }
-  },
-  pause: {
-    button: {
-      width: '28',
-      height: '28',
-      cursor: 'pointer',
-      pointerEvents: 'none',
-      outline: 'none',
-      backgroundColor: 'red',
-      border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6
-    }
-  },
-  resume: {
-    button: {
-      width: '28',
-      height: '28',
-      cursor: 'pointer',
-      pointerEvents: 'none',
-      outline: 'none',
-      backgroundColor: 'orange',
-      border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6
-    }
-  }
-};
-
-<Speech 
-  styles={style} 
-  text="I have enabled the stop start and pause buttons, changed their colour and made them smaller" />
+<Speech
+  stop={true} 
+  pause={true} 
+  resume={true} 
+  text="I am displaying all buttons" />
 
 ```
 
-#### Display text as a button
+#### Display text as a button, and override display text
 
 
 ```
-
 let textstyle = {
   play: {
     hover: {
@@ -333,12 +284,13 @@ let textstyle = {
       backgroundColor: 'inherit',
       border: 'none'
     },
-  }
-};
-
-<Speech styles={textstyle} 
-  textAsButton={true} 
-  text="I have my text string displayed as a button" />
+}
+  
+<Speech 
+  styles={textstyle} 
+  textAsButton={true}    
+  displayText="Hello" 
+  text="I have text displayed as a button" />
 
 ```
 

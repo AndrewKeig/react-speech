@@ -17,7 +17,8 @@ var Speech = React.createClass({
     lang: React.PropTypes.string,
     voiceURI: React.PropTypes.string,
     voice: React.PropTypes.string,
-    textAsButton: React.PropTypes.string
+    textAsButton: React.PropTypes.bool,
+    displayText: React.PropTypes.string
   },
 
   getInitialState: function(props){
@@ -106,45 +107,98 @@ var Speech = React.createClass({
       );
     }
 
+    var play;
+    var stop;
+    var pause;
+    var resume;
+
     if (this.props.textAsButton) {
-      return (
+      play = (
         <Button className="rs-play" styles={this.state.styles.play} onClick={this.play} >
-          <span className="rs-text" style={this.state.styles.text}>{this.props.textAsButton}</span>
+          <span className="rs-text" style={this.state.styles.text}>{this.props.displayText || this.props.text}</span>
+        </Button>
+      );
+    } else {
+      play = (
+        <Button className="rs-play" styles={this.state.styles.play} onClick={this.play} >
+          <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.play.width} height={this.state.styles.play.height} viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+          </svg>
+        </Button>
+      );
+    }
+
+    if (this.props.stop) {
+      stop = (
+        <Button className="rs-stop" styles={this.state.styles.stop} onClick={this.stop}>
+          <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.stop.width} height={this.state.styles.stop.height} viewBox="0 0 24 24">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M6 6h12v12H6z"/>
+          </svg>
+        </Button>
+      );
+    }
+
+    if (this.props.pause) {
+      pause = (
+        <Button className="rs-pause" styles={this.state.styles.pause} onClick={this.pause} >
+          <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.pause.width} height={this.state.styles.pause.height} viewBox="0 0 24 24">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+          </svg>
+        </Button>
+      );
+    }
+
+    if (this.props.resume) {
+      resume = (
+        <Button className="rs-resume" styles={this.state.styles.resume} onClick={this.resume} >
+          <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.resume.width} height={this.state.styles.resume.height} viewBox="0 0 24 24">
+              <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+          </svg>
         </Button>
       );
     }
 
     return (
-      <div className="rs-container" style={this.state.styles.container}>
-        <div className="rs-text" style={this.state.styles.text}>{this.props.text}</div>
-        <div className="rs-buttons" style={this.state.styles.buttons}>
-          <Button className="rs-play" styles={this.state.styles.play} onClick={this.play} >
-            <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.play.width} height={this.state.styles.play.height} viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-                <path d="M0 0h24v24H0z" fill="none"/>
-            </svg>
-          </Button>
-          <Button className="rs-stop" styles={this.state.styles.stop} onClick={this.stop}>
-            <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.stop.width} height={this.state.styles.stop.height} viewBox="0 0 24 24">
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M6 6h12v12H6z"/>
-            </svg>
-          </Button>
-          <Button className="rs-pause" styles={this.state.styles.pause} onClick={this.pause} >
-            <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.pause.width} height={this.state.styles.pause.height} viewBox="0 0 24 24">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                <path d="M0 0h24v24H0z" fill="none"/>
-            </svg>
-          </Button>
-          <Button className="rs-resume" styles={this.state.styles.resume} onClick={this.resume} >
-            <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.resume.width} height={this.state.styles.resume.height} viewBox="0 0 24 24">
-                <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/>
-                <path d="M0 0h24v24H0z" fill="none"/>
-            </svg>
-          </Button>
-        </div>
-      </div>
+      <span className="rs-container">
+        {play} {stop} {pause} {resume}
+      </span>
     );
+
+    // return (
+    //   <div className="rs-container" style={this.state.styles.container}>
+    //     <div className="rs-text" style={this.state.styles.text}>{this.props.text}</div>
+    //     <div className="rs-buttons" style={this.state.styles.buttons}>
+    //       <Button className="rs-play" styles={this.state.styles.play} onClick={this.play} >
+    //         <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.play.width} height={this.state.styles.play.height} viewBox="0 0 24 24">
+    //             <path d="M8 5v14l11-7z"/>
+    //             <path d="M0 0h24v24H0z" fill="none"/>
+    //         </svg>
+    //       </Button>
+    //       <Button className="rs-stop" styles={this.state.styles.stop} onClick={this.stop}>
+    //         <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.stop.width} height={this.state.styles.stop.height} viewBox="0 0 24 24">
+    //             <path d="M0 0h24v24H0z" fill="none"/>
+    //             <path d="M6 6h12v12H6z"/>
+    //         </svg>
+    //       </Button>
+    //       <Button className="rs-pause" styles={this.state.styles.pause} onClick={this.pause} >
+    //         <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.pause.width} height={this.state.styles.pause.height} viewBox="0 0 24 24">
+    //             <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    //             <path d="M0 0h24v24H0z" fill="none"/>
+    //         </svg>
+    //       </Button>
+    //       <Button className="rs-resume" styles={this.state.styles.resume} onClick={this.resume} >
+    //         <svg xmlns="http://www.w3.org/2000/svg" width={this.state.styles.resume.width} height={this.state.styles.resume.height} viewBox="0 0 24 24">
+    //             <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/>
+    //             <path d="M0 0h24v24H0z" fill="none"/>
+    //         </svg>
+    //       </Button>
+    //     </div>
+    //   </div>
+    // );
   }
 });
 

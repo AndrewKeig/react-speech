@@ -8,7 +8,7 @@ let style = {
   stop: { button: { backgroundColor: 'yellow' } }
 };
 
-describe('Speech', () => {
+describe.only('Speech', () => {
 
   require('./mockSpeechSynthesis')();
 
@@ -194,7 +194,7 @@ describe('Speech', () => {
     let speech;
 
     before(() =>{
-      speech = TestUtils.renderIntoDocument(<Speech text="hello"></Speech>);
+      speech = TestUtils.renderIntoDocument(<Speech text="hello" stop={true}></Speech>);
       component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'Button');
       let input1 = component[0].getDOMNode();
       TestUtils.SimulateNative.click(input1);
@@ -224,11 +224,11 @@ describe('Speech', () => {
     let speech;
 
     before(() =>{
-      speech = TestUtils.renderIntoDocument(<Speech text="hello"></Speech>);
+      speech = TestUtils.renderIntoDocument(<Speech text="hello" pause={true}></Speech>);
       component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'Button');
       let input1 = component[0].getDOMNode();
       TestUtils.SimulateNative.click(input1);
-      let input2 = component[2].getDOMNode();
+      let input2 = component[1].getDOMNode();
       TestUtils.SimulateNative.click(input2);
       //console.log('component.state', speech.state);
     });
@@ -255,13 +255,13 @@ describe('Speech', () => {
     let speech;
 
     before(() =>{
-      speech = TestUtils.renderIntoDocument(<Speech text="hello"></Speech>);
+      speech = TestUtils.renderIntoDocument(<Speech text="hello" pause={true} resume={true}></Speech>);
       component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'Button');
       let input1 = component[0].getDOMNode();
       TestUtils.SimulateNative.click(input1);
-      let input2 = component[2].getDOMNode();
+      let input2 = component[1].getDOMNode();
       TestUtils.SimulateNative.click(input2);
-      let input3 = component[3].getDOMNode();
+      let input3 = component[2].getDOMNode();
       TestUtils.SimulateNative.click(input3);
     });
 

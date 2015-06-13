@@ -13,48 +13,13 @@ let style = {
       border: 'solid 1px rgba(255,255,255,1)',
       borderRadius: 6
     },
-  },
-  stop: {
-    button: {
-      width: '28',
-      height: '28',
-      cursor: 'pointer',
-      pointerEvents: 'none',
-      outline: 'none',
-      backgroundColor: 'aqua',
-      border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6
-    }
-  },
-  pause: {
-    button: {
-      width: '28',
-      height: '28',
-      cursor: 'pointer',
-      pointerEvents: 'none',
-      outline: 'none',
-      backgroundColor: 'red',
-      border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6
-    }
-  },
-  resume: {
-    button: {
-      width: '28',
-      height: '28',
-      cursor: 'pointer',
-      pointerEvents: 'none',
-      outline: 'none',
-      backgroundColor: 'orange',
-      border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6
-    }
   }
 };
 
-let hideText = {
-  text: { display: 'none' }
-};
+let mainstyle = {
+  fontFamily: 'Helvetica',
+  fontSize: '0.9em',
+}
 
 let textstyle = {
   play: {
@@ -75,15 +40,28 @@ let textstyle = {
   }
 };
 
-React.render(<div>
-  <Speech autostart={true} text="I have the default settings with autostart set to true" />
+React.render(
+  <div style={mainstyle}>
+  <p>I have the default settings with autostart set to true</p>
+  <Speech 
+    autostart={true} 
+    text="I have the default settings with autostart set to true" />
 
-  <Speech text="I have the default settings" />
+  <p>I have the default settings</p>
+  <Speech 
+    text="I have the default settings" />
 
-  <Speech text="I have altered my voice" voice="Google UK English Female" />
+  <p>I have altered my voice</p>
+  <Speech 
+    text="I have altered my voice" 
+    voice="Google UK English Female" />
 
-  <Speech styles={style} text="I have enabled the stop start and pause buttons, changed their colour and made them smaller" />
+  <p>I have changed the colour of the play button and made it smaller</p>
+  <Speech 
+    styles={style} 
+    text="I have changed the colour of the play buttons and made them smaller" />
 
+  <p>I have altered the pitch, rate and volume of my voice</p>
   <Speech
   autostart={false}
   text="I have altered the pitch, rate and volume of my voice"
@@ -93,6 +71,7 @@ React.render(<div>
   lang="en-GB"
   voice="Daniel" />
 
+  <p>I have set all properties to their default</p>
   <Speech
   autostart={false}
   text="I have set all properties to their default"
@@ -102,12 +81,19 @@ React.render(<div>
   lang="en-GB"
   voice="Google UK English Male" />
 
-  <Speech styles={textstyle} textAsButton={'help'} text="I have text displayed as a button" />
+  <p>I have text displayed as a button</p>
+  <Speech 
+    styles={textstyle} 
+    textAsButton={true} 
+    displayText="Hello" 
+    text="I have text displayed as a button" />
 
-  <Speech styles={hideText} text="I have hidden the text string" />
-
-  Text string removed..
-
+  <p>I am displaying all buttons</p>
+  <Speech 
+    stop={true} 
+    pause={true} 
+    resume={true} 
+    text="I am displaying all buttons" />
 
   </div>
   , document.getElementById('app'));

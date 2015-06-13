@@ -6,8 +6,6 @@ module.exports = {
     width: '100%',
     display: ''
   },
-  buttons: {
-  },
   play: {
     hover: {
       backgroundColor: 'GhostWhite'
@@ -35,8 +33,7 @@ module.exports = {
       outline: 'none',
       backgroundColor: 'Gainsboro',
       border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6,
-      display: 'none'
+      borderRadius: 6
     }
   },
   pause: {
@@ -51,8 +48,7 @@ module.exports = {
       outline: 'none',
       backgroundColor: 'Gainsboro',
       border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6,
-      display: 'none'
+      borderRadius: 6
     }
   },
   resume: {
@@ -67,8 +63,7 @@ module.exports = {
       outline: 'none',
       backgroundColor: 'Gainsboro',
       border: 'solid 1px rgba(255,255,255,1)',
-      borderRadius: 6,
-      display: 'none'
+      borderRadius: 6
     }
   }
 };
