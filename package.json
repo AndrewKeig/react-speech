@@ -28,6 +28,7 @@
     "react": ">=0.13"
   },
   "dependencies": {
+    "react": ">=0.13",
     "object-assign": "^2.0.0"
   },
   "devDependencies": {
@@ -43,7 +44,6 @@
     "jsx-loader": "^0.13.2",
     "mocha": "^2.2.4",
     "react-hot-loader": "^1.2.2",
-    "react-tools": "^0.13.3",
     "webpack": "^1.7.2",
     "webpack-dev-server": "^1.7.0"
   },
