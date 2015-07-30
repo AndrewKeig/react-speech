@@ -7,7 +7,7 @@ var SpeechSynthesis = function(props){
   this.utterance.text = props.text.replace(/\n/g, '');
   this.utterance.lang = props.lang || 'en-GB';
   this.utterance.pitch = parseFloat(props.pitch, 10) || 1;
-  this.utterance.rate = parseFloat(props.rate, 10) || 1;
+  this.utterance.rate = parseFloat(props.rate, 10) || 0.8;
   this.utterance.volume = parseFloat(props.volume, 10) || 1;
 };
 

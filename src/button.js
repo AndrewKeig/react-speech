@@ -38,7 +38,7 @@ var Button = React.createClass({
     assign(style, this.props.styles.button, { color: color, backgroundColor: backgroundColor });
 
     return (
-      <button {...this.props} style={style}
+      <button type="button" {...this.props} style={style}
         onMouseEnter={this.enter}
         onMouseLeave={this.leave} />
     );

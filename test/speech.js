@@ -81,7 +81,7 @@ describe.only('Speech', () => {
     let speech;
 
     before(() =>{
-      let html = <Speech style={style} text="Hello" pitch='1' rate='0.1' volume='0.1' lang='en-US' voice='other'></Speech>
+      let html = <Speech style={style} text="Hello" pitch='0.8' rate='0.1' volume='0.1' lang='en-US' voice='other'></Speech>
       speech = TestUtils.renderIntoDocument(html);
       //console.log(speech);
       component = TestUtils.findRenderedComponentWithType(speech, Speech);
@@ -105,7 +105,7 @@ describe.only('Speech', () => {
     });
 
     it('should contain default pitch', () => {
-      expect(component.props.pitch).to.equal('1');
+      expect(component.props.pitch).to.equal('0.8');
     });
 
     it('should contain default rate', () => {
@@ -139,7 +139,7 @@ describe.only('Speech', () => {
 
     before(() =>{
       speech = TestUtils.renderIntoDocument(<Speech text="hello"></Speech>);
-      component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'Button');
+      component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'button');
       let input1 = component[0].getDOMNode();
       TestUtils.SimulateNative.click(input1);
     });
@@ -165,7 +165,7 @@ describe.only('Speech', () => {
     });
 
     it('should contain default rate', () => {
-      expect(speech.speechSynthesis.utterance.rate).to.equal(1);
+      expect(speech.speechSynthesis.utterance.rate).to.equal(0.8);
     });
 
     it('should contain default volume', () => {
@@ -195,7 +195,7 @@ describe.only('Speech', () => {
 
     before(() =>{
       speech = TestUtils.renderIntoDocument(<Speech text="hello" stop={true}></Speech>);
-      component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'Button');
+      component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'button');
       let input1 = component[0].getDOMNode();
       TestUtils.SimulateNative.click(input1);
       let input2 = component[1].getDOMNode();
@@ -225,7 +225,7 @@ describe.only('Speech', () => {
 
     before(() =>{
       speech = TestUtils.renderIntoDocument(<Speech text="hello" pause={true}></Speech>);
-      component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'Button');
+      component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'button');
       let input1 = component[0].getDOMNode();
       TestUtils.SimulateNative.click(input1);
       let input2 = component[1].getDOMNode();
@@ -256,7 +256,7 @@ describe.only('Speech', () => {
 
     before(() =>{
       speech = TestUtils.renderIntoDocument(<Speech text="hello" pause={true} resume={true}></Speech>);
-      component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'Button');
+      component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'button');
       let input1 = component[0].getDOMNode();
       TestUtils.SimulateNative.click(input1);
       let input2 = component[1].getDOMNode();
