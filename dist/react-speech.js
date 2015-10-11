@@ -226,6 +226,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	});
 
+	Speech.SpeechSynthesis = SpeechSynthesis;
 	module.exports = Speech;
 
 
