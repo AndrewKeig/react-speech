@@ -170,4 +170,5 @@ var Speech = React.createClass({
   }
 });
 
+Speech.SpeechSynthesis = SpeechSynthesis;
 module.exports = Speech;
