@@ -40,16 +40,17 @@
 // ];
 
 var SpeechSynthesis = function(props){
-  var voice = { name: "Samantha (Enhanced)", voiceURI: "com.apple.ttsbundle.Samantha-premium", lang: "en-US", localService: true, "default": true };
+  var voice = { name: "Karen", voiceURI: "com.apple.ttsbundle.Karen-compact", lang: "en-AU", localService: true, "default": true };
   this.utterance = new window.SpeechSynthesisUtterance();
   this.selected = SpeechSynthesis.getVoice(props.voice);
   this.utterance.voice = this.selected[0] || voice;
-  this.utterance.voiceURI = 'Daniel';
+  this.utterance.voiceURI = 'com.apple.ttsbundle.Karen-compact';
   this.utterance.text = props.text.replace(/\n/g, '');
   this.utterance.lang = props.lang || 'en-GB';
   this.utterance.pitch = parseFloat(props.pitch, 10) || 1;
   this.utterance.rate = parseFloat(props.rate, 10) || 0.8;
   this.utterance.volume = parseFloat(props.volume, 10) || 1;
+  console.log('this.utterance', this.utterance);
 };
 
 SpeechSynthesis.supported = function(selected) {
@@ -58,6 +59,7 @@ SpeechSynthesis.supported = function(selected) {
 
 SpeechSynthesis.getVoice = function(selected) {
   return window.speechSynthesis.getVoices().filter(function(voice) {
+    console.log('voice', voice);
     return voice.name === selected;
   });
 };
