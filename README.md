@@ -79,6 +79,7 @@ displayText | `string`| no | no | When displaying text as a button you can use t
 stop | `bool` | false | no | Display a stop button.|
 pause | `bool` | false | no | Display a pause button.|
 resume | `bool` | false | no | Display a resume button.|
+disabled | `bool` | false | no | Disables speech.|
 
 ### Styles
 
