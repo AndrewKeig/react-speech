@@ -1,5 +1,6 @@
 var assign = require('object-assign');
 var React = require('react');
+var update = require('react-addons-update');
 var Button = require('./button');
 var style = require('./style');
 var SpeechSynthesis = require('./speechSynthesis');
@@ -73,7 +74,7 @@ var Speech = React.createClass({
   },
 
   setButtonState: function(play, stop, pause, resume) {
-    var newState = React.addons.update(this.state, {
+    var newState = update(this.state, {
       styles: {
         play: { button: { pointerEvents: { $set: play } } },
         stop: { button: { pointerEvents: { $set: stop } } },

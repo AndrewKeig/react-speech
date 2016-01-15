@@ -1,5 +1,5 @@
-let React = require('react/addons');
-let TestUtils = React.addons.TestUtils;
+let React = require('react');
+let TestUtils = require('react-addons-test-utils');
 let expect = require('chai').expect;
 let styles = require('../src/style.js');
 let Button = require('../src/button.js');
@@ -58,13 +58,13 @@ describe('Button', () => {
     });
 
     it('should update hover state', () => {
-      let input = component.getDOMNode();
+      let input = component;
       TestUtils.SimulateNative.mouseOver(input);
       expect(button.state.hover).to.equal(true);
     });
 
     it('should update hover state when no longer hovering', () => {
-      let input = component.getDOMNode();
+      let input = component;
       TestUtils.SimulateNative.mouseOver(input);
       expect(button.state.hover).to.equal(true);
       TestUtils.SimulateNative.mouseOut(input);

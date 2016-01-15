@@ -9,6 +9,12 @@ The Web Speech API comes in two parts,  [speech synthesis](https://dvcs.w3.org/h
 ![build](https://travis-ci.org/AndrewKeig/react-speech.svg)
 
 
+## React 0.13/0.14
+If you are using React 0.14, please use a version >= 0.3.0 of react-speech.
+
+Please use a version of react-speech before 0.3.0 for react 0.13.
+
+
 ## Install
 
 In order to install `react-speech`, simply run

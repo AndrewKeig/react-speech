@@ -1,4 +1,5 @@
-import React from 'react/addons';
+import React from 'react';
+import ReactDom from 'react-dom';
 import Speech from './src/speech';
 
 let style = {
@@ -40,7 +41,7 @@ let textstyle = {
   }
 };
 
-React.render(
+ReactDom.render(
   <div style={mainstyle}>
   <p>I have the default settings with autostart set to true</p>
   <Speech 

@@ -1,5 +1,5 @@
-let React = require('react/addons');
-let TestUtils = React.addons.TestUtils;
+let React = require('react');
+let TestUtils = require('react-addons-test-utils');
 let expect = require('chai').expect;
 let Speech = require('../src/speech');
 
@@ -8,7 +8,7 @@ let style = {
   stop: { button: { backgroundColor: 'yellow' } }
 };
 
-describe.only('Speech', () => {
+describe('Speech', () => {
 
   require('./mockSpeechSynthesis')();
 
@@ -140,7 +140,7 @@ describe.only('Speech', () => {
     before(() =>{
       speech = TestUtils.renderIntoDocument(<Speech text="hello"></Speech>);
       component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'button');
-      let input1 = component[0].getDOMNode();
+      let input1 = component[0];
       TestUtils.SimulateNative.click(input1);
     });
 
@@ -196,9 +196,9 @@ describe.only('Speech', () => {
     before(() =>{
       speech = TestUtils.renderIntoDocument(<Speech text="hello" stop={true}></Speech>);
       component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'button');
-      let input1 = component[0].getDOMNode();
+      let input1 = component[0];
       TestUtils.SimulateNative.click(input1);
-      let input2 = component[1].getDOMNode();
+      let input2 = component[1];
       TestUtils.SimulateNative.click(input2);
     });
 
@@ -226,9 +226,9 @@ describe.only('Speech', () => {
     before(() =>{
       speech = TestUtils.renderIntoDocument(<Speech text="hello" pause={true}></Speech>);
       component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'button');
-      let input1 = component[0].getDOMNode();
+      let input1 = component[0];
       TestUtils.SimulateNative.click(input1);
-      let input2 = component[1].getDOMNode();
+      let input2 = component[1];
       TestUtils.SimulateNative.click(input2);
       //console.log('component.state', speech.state);
     });
@@ -257,11 +257,11 @@ describe.only('Speech', () => {
     before(() =>{
       speech = TestUtils.renderIntoDocument(<Speech text="hello" pause={true} resume={true}></Speech>);
       component = TestUtils.scryRenderedDOMComponentsWithTag(speech, 'button');
-      let input1 = component[0].getDOMNode();
+      let input1 = component[0];
       TestUtils.SimulateNative.click(input1);
-      let input2 = component[1].getDOMNode();
+      let input2 = component[1];
       TestUtils.SimulateNative.click(input2);
-      let input3 = component[2].getDOMNode();
+      let input3 = component[2];
       TestUtils.SimulateNative.click(input3);
     });
 
