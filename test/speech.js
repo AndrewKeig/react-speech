@@ -10,7 +10,10 @@ let style = {
 
 describe('Speech', () => {
 
-  require('./mockSpeechSynthesis')();
+  before(() =>{
+    require('./setup');
+    require('./mockSpeechSynthesis')();
+  });
 
   describe('Speech on load', () => {
     let component;
@@ -19,9 +22,7 @@ describe('Speech', () => {
     before(() =>{
       let html = <Speech text="hello"></Speech>
       speech = TestUtils.renderIntoDocument(html);
-      //console.log(speech);
       component = TestUtils.findRenderedComponentWithType(speech, Speech);
-      //console.log(component);
     });
 
     it('should render component', () => {
@@ -83,9 +84,7 @@ describe('Speech', () => {
     before(() =>{
       let html = <Speech style={style} text="Hello" pitch='0.8' rate='0.1' volume='0.1' lang='en-US' voice='other'></Speech>
       speech = TestUtils.renderIntoDocument(html);
-      //console.log(speech);
       component = TestUtils.findRenderedComponentWithType(speech, Speech);
-      //console.log(component);
     });
 
     it('should render component', () => {
@@ -230,7 +229,6 @@ describe('Speech', () => {
       TestUtils.SimulateNative.click(input1);
       let input2 = component[1];
       TestUtils.SimulateNative.click(input2);
-      //console.log('component.state', speech.state);
     });
 
     it('should have play button in correct state', () => {

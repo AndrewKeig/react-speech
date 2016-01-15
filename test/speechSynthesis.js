@@ -3,13 +3,16 @@ let SpeechSynthesis = require('../src/speechSynthesis');
 
 describe('Speech Synthesis', () => {
 
+  before(() =>{
+    require('./setup');
+    require('./mockSpeechSynthesis')();
+  });
+
   describe('Speech Synthesis instantiate', () => {
     let speechSynthesis;
     let props;
 
     before(() => {
-      require('./mockSpeechSynthesis')();
-
       props = {
         text: "Hello",
         pitch: "2",
@@ -20,8 +23,6 @@ describe('Speech Synthesis', () => {
       };
 
       speechSynthesis = new SpeechSynthesis(props);
-      // this.speechSynthesis.onend = this.onend.bind(this);
-      // this.speechSynthesis.onerror = this.onerror.bind(this);
     });
 
     it('should contain a text', () => {
@@ -54,8 +55,6 @@ describe('Speech Synthesis', () => {
     let props;
 
     before(() => {
-      require('./mockSpeechSynthesis')();
-
       props = {
         text: "Hello",
         pitch: "2",
