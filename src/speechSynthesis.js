@@ -2,12 +2,12 @@
 var SpeechSynthesis = function(props){
   this.utterance = new window.SpeechSynthesisUtterance();
   this.selected = SpeechSynthesis.getVoice(props.voice);
-  this.utterance.voice = this.selected[0] || 'Daniel';
-  this.utterance.voiceURI = 'Daniel';
+  this.utterance.voice = this.selected[0] || 'Fiona';
+  this.utterance.voiceURI = 'Fiona';
   this.utterance.text = props.text.replace(/\n/g, '');
   this.utterance.lang = props.lang || 'en-GB';
-  this.utterance.pitch = parseFloat(props.pitch, 10) || 1;
-  this.utterance.rate = parseFloat(props.rate, 10) || 0.8;
+  this.utterance.pitch = parseFloat(props.pitch, 10) || 0.8;
+  this.utterance.rate = parseFloat(props.rate, 10) || 1;
   this.utterance.volume = parseFloat(props.volume, 10) || 1;
 };
 

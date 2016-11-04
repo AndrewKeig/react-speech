@@ -144,11 +144,11 @@ describe('Speech', () => {
     });
 
     it('should contain default voiceURI', () => {
-      expect(speech.speechSynthesis.utterance.voiceURI).to.equal('Daniel');
+      expect(speech.speechSynthesis.utterance.voiceURI).to.equal('Fiona');
     });
 
     it('should contain default voice', () => {
-      expect(speech.speechSynthesis.utterance.voice).to.equal('Daniel');
+      expect(speech.speechSynthesis.utterance.voice).to.equal('Fiona');
     });
 
     it('should contain default text', () => {
@@ -160,11 +160,11 @@ describe('Speech', () => {
     });
 
     it('should contain default pitch', () => {
-      expect(speech.speechSynthesis.utterance.pitch).to.equal(1);
+      expect(speech.speechSynthesis.utterance.pitch).to.equal(0.8);
     });
 
     it('should contain default rate', () => {
-      expect(speech.speechSynthesis.utterance.rate).to.equal(0.8);
+      expect(speech.speechSynthesis.utterance.rate).to.equal(1);
     });
 
     it('should contain default volume', () => {
