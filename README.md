@@ -1,4 +1,4 @@
-# react-speech <img src="https://github.com/AndrewKeig/react-speech/blob/master/logo.png" style="padding:6px"" align="right">
+# react-speech 
 
 React component for the [Web Speech](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html) api. 
 
