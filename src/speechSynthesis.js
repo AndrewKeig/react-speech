@@ -2,8 +2,7 @@
 const SpeechSynthesis = function(props){
   this.utterance = new window.SpeechSynthesisUtterance();
   this.selected = SpeechSynthesis.getVoice(props.voice);
-  this.utterance.voice = this.selected && this.selected.count > 0 ? this.selected[0] : 'Fiona';
-  this.utterance.voiceURI = 'Fiona';
+  this.utterance.voice = this.selected;
   this.utterance.text = props.text.replace(/\n/g, '');
   this.utterance.lang = props.lang || 'en-GB';
   this.utterance.pitch = parseFloat(props.pitch, 10) || 0.8;
@@ -16,9 +15,12 @@ SpeechSynthesis.supported = function(selected) {
 };
 
 SpeechSynthesis.getVoice = function(selected) {
-  return window.speechSynthesis.getVoices().filter(function(voice) {
+  const voices = window.speechSynthesis.getVoices();
+  const voice = voices.find(function(voice) {
     return voice.name === selected;
   });
+
+  return voice !== undefined ? voice : voices[0];
 };
 
 SpeechSynthesis.prototype.onend = function(func) {

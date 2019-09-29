@@ -132,7 +132,7 @@ describe('Speech', () => {
     });
   });
 
-  describe.only('Speech on click play', () => {
+  describe('Speech on click play', () => {
     let component;
     let speech;
 
@@ -143,12 +143,8 @@ describe('Speech', () => {
       TestUtils.SimulateNative.click(input1);
     });
 
-    it('should contain default voiceURI', () => {
-      expect(speech.speechSynthesis.utterance.voiceURI).to.equal('Fiona');
-    });
-
     it('should contain default voice', () => {
-      expect(speech.speechSynthesis.utterance.voice).to.equal('Fiona');
+      expect(speech.speechSynthesis.utterance.voice.name).to.equal('Google UK English Male');
     });
 
     it('should contain default text', () => {

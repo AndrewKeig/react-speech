@@ -1,10 +1,10 @@
-const React = require('react');
-const update = require('immutability-helper');
-const Button = require('./button');
-const style = require('./style');
-const SpeechSynthesis = require('./speechSynthesis');
+var React = require('react');
+var update = require('immutability-helper');
+var Button = require('./button');
+var style = require('./style');
+var SpeechSynthesis = require('./speechSynthesis');
 
-const Speech = React.createClass({
+var Speech = React.createClass({
   displayName: 'react-speech',
 
   propTypes: {
@@ -33,13 +33,14 @@ const Speech = React.createClass({
 
   componentDidMount: function() {
     this.setButtonState('all', 'none', 'none', 'none');
+
     if (SpeechSynthesis.supported() && this.props.autostart) {
       this.play();
     }
   },
 
   getState: function() {
-    const styles = JSON.parse(JSON.stringify(style));
+    var styles = JSON.parse(JSON.stringify(style));
 
     for (var key in this.props.styles) {
       if (this.props.styles.hasOwnProperty(key)) {
@@ -72,7 +73,7 @@ const Speech = React.createClass({
   },
 
   setButtonState: function(play, stop, pause, resume) {
-    const newState = update(this.state, {
+    var newState = update(this.state, {
       styles: {
         play: { button: { pointerEvents: { $set: play } } },
         stop: { button: { pointerEvents: { $set: stop } } },

@@ -21,8 +21,11 @@ describe('Speech Synthesis', () => {
         lang: "en-GB",
         voice: "Google UK English Male",
       };
-
       speechSynthesis = new SpeechSynthesis(props);
+      setTimeout(() => {
+
+      },2000);
+
     });
 
     it('should contain a text', () => {
@@ -46,6 +49,7 @@ describe('Speech Synthesis', () => {
     });
 
     it('should contain a voice', () => {
+      // console.log('----', speechSynthesis.utterance)
       expect(speechSynthesis.utterance.voice.name).to.equal(props.voice);
     });
   });
@@ -61,7 +65,7 @@ describe('Speech Synthesis', () => {
         rate: "0.5",
         volume: "0.2",
         lang: "en-GB",
-        voice: "Google UK English Male",
+        voice: "Alex en-US",
       };
 
       speechSynthesis = new SpeechSynthesis(props);

@@ -5,7 +5,8 @@
     "modules": true,
     "arrowFunctions": true,
     "blockBindings": true,
-    "generators": true
+    "generators": true,
+    "async" : true
   },
   "rules": {
     "strict": 0,
