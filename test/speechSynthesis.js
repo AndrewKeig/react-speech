@@ -1,5 +1,5 @@
-let expect = require('chai').expect;
-let SpeechSynthesis = require('../src/speechSynthesis');
+const expect = require('chai').expect;
+const SpeechSynthesis = require('../src/speechSynthesis');
 
 describe('Speech Synthesis', () => {
 

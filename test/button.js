@@ -1,8 +1,8 @@
-let React = require('react');
-let TestUtils = require('react-addons-test-utils');
-let expect = require('chai').expect;
-let styles = require('../src/style.js');
-let Button = require('../src/button.js');
+const React = require('react');
+const TestUtils = require('react-addons-test-utils');
+const expect = require('chai').expect;
+const styles = require('../src/style.js');
+const Button = require('../src/button.js');
 
 describe('Button', () => {
 

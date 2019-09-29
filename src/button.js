@@ -1,7 +1,6 @@
-var assign = require('object-assign');
-var React = require('react');
+const React = require('react');
 
-var Button = React.createClass({
+const Button = React.createClass({
   displayName: 'react-speech-button',
 
   propTypes: {
@@ -32,10 +31,9 @@ var Button = React.createClass({
   },
 
   render: function() {
-    var style = {};
-    var backgroundColor = this.state.hover ? this.props.styles.hover.backgroundColor : this.state.backgroundColor;
-    var color = this.state.hover ? this.props.styles.hover.color : this.state.color;
-    assign(style, this.props.styles.button, { color: color, backgroundColor: backgroundColor });
+    const backgroundColor = this.state.hover ? this.props.styles.hover.backgroundColor : this.state.backgroundColor;
+    const color = this.state.hover ? this.props.styles.hover.color : this.state.color;
+    const style = Object.assign({}, this.props.styles.button, { color: color, backgroundColor: backgroundColor });
 
     return (
       <button type="button" {...this.props} style={style}

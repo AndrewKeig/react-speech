@@ -7,7 +7,7 @@
 		exports["ReactSpeech"] = factory(require("react"));
 	else
 		root["ReactSpeech"] = factory(root["React"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -52,16 +52,15 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	var assign = __webpack_require__(1);
-	var React = __webpack_require__(2);
-	var update = __webpack_require__(3);
-	var Button = __webpack_require__(8);
-	var style = __webpack_require__(9);
-	var SpeechSynthesis = __webpack_require__(10);
+	const React = __webpack_require__(1);
+	const update = __webpack_require__(2);
+	const Button = __webpack_require__(4);
+	const style = __webpack_require__(5);
+	const SpeechSynthesis = __webpack_require__(6);
 
-	var Speech = React.createClass({
+	const Speech = React.createClass({
 	  displayName: 'react-speech',
 
 	  propTypes: {
@@ -90,18 +89,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  componentDidMount: function() {
 	    this.setButtonState('all', 'none', 'none', 'none');
-
 	    if (SpeechSynthesis.supported() && this.props.autostart) {
 	      this.play();
 	    }
 	  },
 
 	  getState: function() {
-	    var styles = JSON.parse(JSON.stringify(style));
+	    const styles = JSON.parse(JSON.stringify(style));
 
 	    for (var key in this.props.styles) {
 	      if (this.props.styles.hasOwnProperty(key)) {
-	        styles[key] = assign(styles[key], this.props.styles[key]);
+	        styles[key] = Object.assign(styles[key], this.props.styles[key]);
 	      }
 	    }
 
@@ -130,7 +128,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  setButtonState: function(play, stop, pause, resume) {
-	    var newState = update(this.state, {
+	    const newState = update(this.state, {
 	      styles: {
 	        play: { button: { pointerEvents: { $set: play } } },
 	        stop: { button: { pointerEvents: { $set: stop } } },
@@ -232,280 +230,260 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Speech;
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
-	/* eslint-disable no-unused-vars */
-	'use strict';
-	var hasOwnProperty = Object.prototype.hasOwnProperty;
-	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+	module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
 
-	function toObject(val) {
-		if (val === null || val === undefined) {
-			throw new TypeError('Object.assign cannot be called with null or undefined');
-		}
-
-		return Object(val);
-	}
-
-	module.exports = Object.assign || function (target, source) {
-		var from;
-		var to = toObject(target);
-		var symbols;
-
-		for (var s = 1; s < arguments.length; s++) {
-			from = Object(arguments[s]);
-
-			for (var key in from) {
-				if (hasOwnProperty.call(from, key)) {
-					to[key] = from[key];
-				}
-			}
-
-			if (Object.getOwnPropertySymbols) {
-				symbols = Object.getOwnPropertySymbols(from);
-				for (var i = 0; i < symbols.length; i++) {
-					if (propIsEnumerable.call(from, symbols[i])) {
-						to[symbols[i]] = from[symbols[i]];
-					}
-				}
-			}
-		}
-
-		return to;
-	};
-
-
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(4);
-
-/***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule update
-	 */
-
-	/* global hasOwnProperty:true */
-
-	'use strict';
-
-	var assign = __webpack_require__(5);
-	var keyOf = __webpack_require__(6);
-	var invariant = __webpack_require__(7);
-	var hasOwnProperty = ({}).hasOwnProperty;
-
-	function shallowCopy(x) {
-	  if (Array.isArray(x)) {
-	    return x.concat();
-	  } else if (x && typeof x === 'object') {
-	    return assign(new x.constructor(), x);
-	  } else {
-	    return x;
-	  }
-	}
-
-	var COMMAND_PUSH = keyOf({ $push: null });
-	var COMMAND_UNSHIFT = keyOf({ $unshift: null });
-	var COMMAND_SPLICE = keyOf({ $splice: null });
-	var COMMAND_SET = keyOf({ $set: null });
-	var COMMAND_MERGE = keyOf({ $merge: null });
-	var COMMAND_APPLY = keyOf({ $apply: null });
-
-	var ALL_COMMANDS_LIST = [COMMAND_PUSH, COMMAND_UNSHIFT, COMMAND_SPLICE, COMMAND_SET, COMMAND_MERGE, COMMAND_APPLY];
-
-	var ALL_COMMANDS_SET = {};
-
-	ALL_COMMANDS_LIST.forEach(function (command) {
-	  ALL_COMMANDS_SET[command] = true;
-	});
-
-	function invariantArrayCase(value, spec, command) {
-	  !Array.isArray(value) ? (undefined) !== 'production' ? invariant(false, 'update(): expected target of %s to be an array; got %s.', command, value) : invariant(false) : undefined;
-	  var specValue = spec[command];
-	  !Array.isArray(specValue) ? (undefined) !== 'production' ? invariant(false, 'update(): expected spec of %s to be an array; got %s. ' + 'Did you forget to wrap your parameter in an array?', command, specValue) : invariant(false) : undefined;
-	}
-
-	function update(value, spec) {
-	  !(typeof spec === 'object') ? (undefined) !== 'production' ? invariant(false, 'update(): You provided a key path to update() that did not contain one ' + 'of %s. Did you forget to include {%s: ...}?', ALL_COMMANDS_LIST.join(', '), COMMAND_SET) : invariant(false) : undefined;
-
-	  if (hasOwnProperty.call(spec, COMMAND_SET)) {
-	    !(Object.keys(spec).length === 1) ? (undefined) !== 'production' ? invariant(false, 'Cannot have more than one key in an object with %s', COMMAND_SET) : invariant(false) : undefined;
-
-	    return spec[COMMAND_SET];
-	  }
-
-	  var nextValue = shallowCopy(value);
-
-	  if (hasOwnProperty.call(spec, COMMAND_MERGE)) {
-	    var mergeObj = spec[COMMAND_MERGE];
-	    !(mergeObj && typeof mergeObj === 'object') ? (undefined) !== 'production' ? invariant(false, 'update(): %s expects a spec of type \'object\'; got %s', COMMAND_MERGE, mergeObj) : invariant(false) : undefined;
-	    !(nextValue && typeof nextValue === 'object') ? (undefined) !== 'production' ? invariant(false, 'update(): %s expects a target of type \'object\'; got %s', COMMAND_MERGE, nextValue) : invariant(false) : undefined;
-	    assign(nextValue, spec[COMMAND_MERGE]);
-	  }
-
-	  if (hasOwnProperty.call(spec, COMMAND_PUSH)) {
-	    invariantArrayCase(value, spec, COMMAND_PUSH);
-	    spec[COMMAND_PUSH].forEach(function (item) {
-	      nextValue.push(item);
-	    });
-	  }
-
-	  if (hasOwnProperty.call(spec, COMMAND_UNSHIFT)) {
-	    invariantArrayCase(value, spec, COMMAND_UNSHIFT);
-	    spec[COMMAND_UNSHIFT].forEach(function (item) {
-	      nextValue.unshift(item);
-	    });
-	  }
-
-	  if (hasOwnProperty.call(spec, COMMAND_SPLICE)) {
-	    !Array.isArray(value) ? (undefined) !== 'production' ? invariant(false, 'Expected %s target to be an array; got %s', COMMAND_SPLICE, value) : invariant(false) : undefined;
-	    !Array.isArray(spec[COMMAND_SPLICE]) ? (undefined) !== 'production' ? invariant(false, 'update(): expected spec of %s to be an array of arrays; got %s. ' + 'Did you forget to wrap your parameters in an array?', COMMAND_SPLICE, spec[COMMAND_SPLICE]) : invariant(false) : undefined;
-	    spec[COMMAND_SPLICE].forEach(function (args) {
-	      !Array.isArray(args) ? (undefined) !== 'production' ? invariant(false, 'update(): expected spec of %s to be an array of arrays; got %s. ' + 'Did you forget to wrap your parameters in an array?', COMMAND_SPLICE, spec[COMMAND_SPLICE]) : invariant(false) : undefined;
-	      nextValue.splice.apply(nextValue, args);
-	    });
-	  }
-
-	  if (hasOwnProperty.call(spec, COMMAND_APPLY)) {
-	    !(typeof spec[COMMAND_APPLY] === 'function') ? (undefined) !== 'production' ? invariant(false, 'update(): expected spec of %s to be a function; got %s.', COMMAND_APPLY, spec[COMMAND_APPLY]) : invariant(false) : undefined;
-	    nextValue = spec[COMMAND_APPLY](nextValue);
-	  }
-
-	  for (var k in spec) {
-	    if (!(ALL_COMMANDS_SET.hasOwnProperty(k) && ALL_COMMANDS_SET[k])) {
-	      nextValue[k] = update(value[k], spec[k]);
-	    }
-	  }
-
-	  return nextValue;
-	}
-
-	module.exports = update;
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2014-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule Object.assign
-	 */
-
-	// https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign
-
-	'use strict';
-
-	function assign(target, sources) {
-	  if (target == null) {
-	    throw new TypeError('Object.assign target cannot be null or undefined');
-	  }
-
-	  var to = Object(target);
-	  var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-	  for (var nextIndex = 1; nextIndex < arguments.length; nextIndex++) {
-	    var nextSource = arguments[nextIndex];
-	    if (nextSource == null) {
-	      continue;
-	    }
-
-	    var from = Object(nextSource);
-
-	    // We don't currently support accessors nor proxies. Therefore this
-	    // copy cannot throw. If we ever supported this then we must handle
-	    // exceptions and side-effects. We don't support symbols so they won't
-	    // be transferred.
-
-	    for (var key in from) {
-	      if (hasOwnProperty.call(from, key)) {
-	        to[key] = from[key];
-	      }
-	    }
-	  }
-
-	  return to;
-	}
-
-	module.exports = assign;
-
-/***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule keyOf
-	 */
-
-	/**
-	 * Allows extraction of a minified key. Let's the build system minify keys
-	 * without losing the ability to dynamically use key strings as values
-	 * themselves. Pass in an object with a single key/val pair and it will return
-	 * you the string key of that single record. Suppose you want to grab the
-	 * value for a key 'className' inside of an object. Key/val minification may
-	 * have aliased that key to be 'xa12'. keyOf({className: null}) will return
-	 * 'xa12' in that case. Resolve keys you want to use once at startup time, then
-	 * reuse those resolutions.
-	 */
 	"use strict";
-
-	var keyOf = function (oneKeyObj) {
-	  var key;
-	  for (key in oneKeyObj) {
-	    if (!oneKeyObj.hasOwnProperty(key)) {
-	      continue;
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var invariant = __webpack_require__(3);
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var splice = Array.prototype.splice;
+	var toString = Object.prototype.toString;
+	function type(obj) {
+	    return toString.call(obj).slice(8, -1);
+	}
+	var assign = Object.assign || /* istanbul ignore next */ (function (target, source) {
+	    getAllKeys(source).forEach(function (key) {
+	        if (hasOwnProperty.call(source, key)) {
+	            target[key] = source[key];
+	        }
+	    });
+	    return target;
+	});
+	var getAllKeys = typeof Object.getOwnPropertySymbols === 'function'
+	    ? function (obj) { return Object.keys(obj).concat(Object.getOwnPropertySymbols(obj)); }
+	    /* istanbul ignore next */
+	    : function (obj) { return Object.keys(obj); };
+	function copy(object) {
+	    return Array.isArray(object)
+	        ? assign(object.constructor(object.length), object)
+	        : (type(object) === 'Map')
+	            ? new Map(object)
+	            : (type(object) === 'Set')
+	                ? new Set(object)
+	                : (object && typeof object === 'object')
+	                    ? assign(Object.create(Object.getPrototypeOf(object)), object)
+	                    /* istanbul ignore next */
+	                    : object;
+	}
+	var Context = /** @class */ (function () {
+	    function Context() {
+	        this.commands = assign({}, defaultCommands);
+	        this.update = this.update.bind(this);
+	        // Deprecated: update.extend, update.isEquals and update.newContext
+	        this.update.extend = this.extend = this.extend.bind(this);
+	        this.update.isEquals = function (x, y) { return x === y; };
+	        this.update.newContext = function () { return new Context().update; };
 	    }
-	    return key;
-	  }
-	  return null;
+	    Object.defineProperty(Context.prototype, "isEquals", {
+	        get: function () {
+	            return this.update.isEquals;
+	        },
+	        set: function (value) {
+	            this.update.isEquals = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Context.prototype.extend = function (directive, fn) {
+	        this.commands[directive] = fn;
+	    };
+	    Context.prototype.update = function (object, $spec) {
+	        var _this = this;
+	        var spec = (typeof $spec === 'function') ? { $apply: $spec } : $spec;
+	        if (!(Array.isArray(object) && Array.isArray(spec))) {
+	            invariant(!Array.isArray(spec), 'update(): You provided an invalid spec to update(). The spec may ' +
+	                'not contain an array except as the value of $set, $push, $unshift, ' +
+	                '$splice or any custom command allowing an array value.');
+	        }
+	        invariant(typeof spec === 'object' && spec !== null, 'update(): You provided an invalid spec to update(). The spec and ' +
+	            'every included key path must be plain objects containing one of the ' +
+	            'following commands: %s.', Object.keys(this.commands).join(', '));
+	        var nextObject = object;
+	        getAllKeys(spec).forEach(function (key) {
+	            if (hasOwnProperty.call(_this.commands, key)) {
+	                var objectWasNextObject = object === nextObject;
+	                nextObject = _this.commands[key](spec[key], nextObject, spec, object);
+	                if (objectWasNextObject && _this.isEquals(nextObject, object)) {
+	                    nextObject = object;
+	                }
+	            }
+	            else {
+	                var nextValueForKey = type(object) === 'Map'
+	                    ? _this.update(object.get(key), spec[key])
+	                    : _this.update(object[key], spec[key]);
+	                var nextObjectValue = type(nextObject) === 'Map'
+	                    ? nextObject.get(key)
+	                    : nextObject[key];
+	                if (!_this.isEquals(nextValueForKey, nextObjectValue)
+	                    || typeof nextValueForKey === 'undefined'
+	                        && !hasOwnProperty.call(object, key)) {
+	                    if (nextObject === object) {
+	                        nextObject = copy(object);
+	                    }
+	                    if (type(nextObject) === 'Map') {
+	                        nextObject.set(key, nextValueForKey);
+	                    }
+	                    else {
+	                        nextObject[key] = nextValueForKey;
+	                    }
+	                }
+	            }
+	        });
+	        return nextObject;
+	    };
+	    return Context;
+	}());
+	exports.Context = Context;
+	var defaultCommands = {
+	    $push: function (value, nextObject, spec) {
+	        invariantPushAndUnshift(nextObject, spec, '$push');
+	        return value.length ? nextObject.concat(value) : nextObject;
+	    },
+	    $unshift: function (value, nextObject, spec) {
+	        invariantPushAndUnshift(nextObject, spec, '$unshift');
+	        return value.length ? value.concat(nextObject) : nextObject;
+	    },
+	    $splice: function (value, nextObject, spec, originalObject) {
+	        invariantSplices(nextObject, spec);
+	        value.forEach(function (args) {
+	            invariantSplice(args);
+	            if (nextObject === originalObject && args.length) {
+	                nextObject = copy(originalObject);
+	            }
+	            splice.apply(nextObject, args);
+	        });
+	        return nextObject;
+	    },
+	    $set: function (value, _nextObject, spec) {
+	        invariantSet(spec);
+	        return value;
+	    },
+	    $toggle: function (targets, nextObject) {
+	        invariantSpecArray(targets, '$toggle');
+	        var nextObjectCopy = targets.length ? copy(nextObject) : nextObject;
+	        targets.forEach(function (target) {
+	            nextObjectCopy[target] = !nextObject[target];
+	        });
+	        return nextObjectCopy;
+	    },
+	    $unset: function (value, nextObject, _spec, originalObject) {
+	        invariantSpecArray(value, '$unset');
+	        value.forEach(function (key) {
+	            if (Object.hasOwnProperty.call(nextObject, key)) {
+	                if (nextObject === originalObject) {
+	                    nextObject = copy(originalObject);
+	                }
+	                delete nextObject[key];
+	            }
+	        });
+	        return nextObject;
+	    },
+	    $add: function (values, nextObject, _spec, originalObject) {
+	        invariantMapOrSet(nextObject, '$add');
+	        invariantSpecArray(values, '$add');
+	        if (type(nextObject) === 'Map') {
+	            values.forEach(function (_a) {
+	                var key = _a[0], value = _a[1];
+	                if (nextObject === originalObject && nextObject.get(key) !== value) {
+	                    nextObject = copy(originalObject);
+	                }
+	                nextObject.set(key, value);
+	            });
+	        }
+	        else {
+	            values.forEach(function (value) {
+	                if (nextObject === originalObject && !nextObject.has(value)) {
+	                    nextObject = copy(originalObject);
+	                }
+	                nextObject.add(value);
+	            });
+	        }
+	        return nextObject;
+	    },
+	    $remove: function (value, nextObject, _spec, originalObject) {
+	        invariantMapOrSet(nextObject, '$remove');
+	        invariantSpecArray(value, '$remove');
+	        value.forEach(function (key) {
+	            if (nextObject === originalObject && nextObject.has(key)) {
+	                nextObject = copy(originalObject);
+	            }
+	            nextObject.delete(key);
+	        });
+	        return nextObject;
+	    },
+	    $merge: function (value, nextObject, _spec, originalObject) {
+	        invariantMerge(nextObject, value);
+	        getAllKeys(value).forEach(function (key) {
+	            if (value[key] !== nextObject[key]) {
+	                if (nextObject === originalObject) {
+	                    nextObject = copy(originalObject);
+	                }
+	                nextObject[key] = value[key];
+	            }
+	        });
+	        return nextObject;
+	    },
+	    $apply: function (value, original) {
+	        invariantApply(value);
+	        return value(original);
+	    },
 	};
+	var defaultContext = new Context();
+	exports.isEquals = defaultContext.update.isEquals;
+	exports.extend = defaultContext.extend;
+	exports.default = defaultContext.update;
+	// @ts-ignore
+	exports.default.default = module.exports = assign(exports.default, exports);
+	// invariants
+	function invariantPushAndUnshift(value, spec, command) {
+	    invariant(Array.isArray(value), 'update(): expected target of %s to be an array; got %s.', command, value);
+	    invariantSpecArray(spec[command], command);
+	}
+	function invariantSpecArray(spec, command) {
+	    invariant(Array.isArray(spec), 'update(): expected spec of %s to be an array; got %s. ' +
+	        'Did you forget to wrap your parameter in an array?', command, spec);
+	}
+	function invariantSplices(value, spec) {
+	    invariant(Array.isArray(value), 'Expected $splice target to be an array; got %s', value);
+	    invariantSplice(spec.$splice);
+	}
+	function invariantSplice(value) {
+	    invariant(Array.isArray(value), 'update(): expected spec of $splice to be an array of arrays; got %s. ' +
+	        'Did you forget to wrap your parameters in an array?', value);
+	}
+	function invariantApply(fn) {
+	    invariant(typeof fn === 'function', 'update(): expected spec of $apply to be a function; got %s.', fn);
+	}
+	function invariantSet(spec) {
+	    invariant(Object.keys(spec).length === 1, 'Cannot have more than one key in an object with $set');
+	}
+	function invariantMerge(target, specValue) {
+	    invariant(specValue && typeof specValue === 'object', 'update(): $merge expects a spec of type \'object\'; got %s', specValue);
+	    invariant(target && typeof target === 'object', 'update(): $merge expects a target of type \'object\'; got %s', target);
+	}
+	function invariantMapOrSet(target, command) {
+	    var typeOfTarget = type(target);
+	    invariant(typeOfTarget === 'Map' || typeOfTarget === 'Set', 'update(): %s expects a target of type Set or Map; got %s', command, typeOfTarget);
+	}
 
-	module.exports = keyOf;
 
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule invariant
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 */
 
 	'use strict';
@@ -521,7 +499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * will remain to ensure logic does not differ in production.
 	 */
 
-	function invariant(condition, format, a, b, c, d, e, f) {
+	var invariant = function(condition, format, a, b, c, d, e, f) {
 	  if ((undefined) !== 'production') {
 	    if (format === undefined) {
 	      throw new Error('invariant requires an error message argument');
@@ -531,31 +509,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (!condition) {
 	    var error;
 	    if (format === undefined) {
-	      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+	      error = new Error(
+	        'Minified exception occurred; use the non-minified dev environment ' +
+	        'for the full error message and additional helpful warnings.'
+	      );
 	    } else {
 	      var args = [a, b, c, d, e, f];
 	      var argIndex = 0;
-	      error = new Error(format.replace(/%s/g, function () {
-	        return args[argIndex++];
-	      }));
+	      error = new Error(
+	        format.replace(/%s/g, function() { return args[argIndex++]; })
+	      );
 	      error.name = 'Invariant Violation';
 	    }
 
 	    error.framesToPop = 1; // we don't care about invariant's own frame
 	    throw error;
 	  }
-	}
+	};
 
 	module.exports = invariant;
 
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
 
-	var assign = __webpack_require__(1);
-	var React = __webpack_require__(2);
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var Button = React.createClass({
+	const React = __webpack_require__(1);
+
+	const Button = React.createClass({
 	  displayName: 'react-speech-button',
 
 	  propTypes: {
@@ -586,10 +567,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  render: function() {
-	    var style = {};
-	    var backgroundColor = this.state.hover ? this.props.styles.hover.backgroundColor : this.state.backgroundColor;
-	    var color = this.state.hover ? this.props.styles.hover.color : this.state.color;
-	    assign(style, this.props.styles.button, { color: color, backgroundColor: backgroundColor });
+	    const backgroundColor = this.state.hover ? this.props.styles.hover.backgroundColor : this.state.backgroundColor;
+	    const color = this.state.hover ? this.props.styles.hover.color : this.state.color;
+	    const style = Object.assign({}, this.props.styles.button, { color: color, backgroundColor: backgroundColor });
 
 	    return (
 	      React.createElement("button", React.__spread({type: "button"},  this.props, {style: style, 
@@ -602,9 +582,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Button;
 
 
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
 
 	module.exports = {
 	  container: {
@@ -677,15 +657,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
 
 	
-	var SpeechSynthesis = function(props){
+	const SpeechSynthesis = function(props){
 	  this.utterance = new window.SpeechSynthesisUtterance();
 	  this.selected = SpeechSynthesis.getVoice(props.voice);
-	  this.utterance.voice = this.selected[0] || 'Fiona';
+	  this.utterance.voice = this.selected && this.selected.count > 0 ? this.selected[0] : 'Fiona';
 	  this.utterance.voiceURI = 'Fiona';
 	  this.utterance.text = props.text.replace(/\n/g, '');
 	  this.utterance.lang = props.lang || 'en-GB';
@@ -732,7 +712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SpeechSynthesis;
 
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;

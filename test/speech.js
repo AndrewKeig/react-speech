@@ -1,9 +1,9 @@
-let React = require('react');
-let TestUtils = require('react-addons-test-utils');
-let expect = require('chai').expect;
-let Speech = require('../src/speech');
+const React = require('react');
+const TestUtils = require('react-addons-test-utils');
+const expect = require('chai').expect;
+const Speech = require('../src/speech');
 
-let style = {
+const style = {
   play: { button: { color: 'black', backgroundColor: 'yellow' } },
   stop: { button: { backgroundColor: 'yellow' } }
 };
@@ -132,7 +132,7 @@ describe('Speech', () => {
     });
   });
 
-  describe('Speech on click play', () => {
+  describe.only('Speech on click play', () => {
     let component;
     let speech;
 

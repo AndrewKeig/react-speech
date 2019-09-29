@@ -1,8 +1,8 @@
 
-var SpeechSynthesis = function(props){
+const SpeechSynthesis = function(props){
   this.utterance = new window.SpeechSynthesisUtterance();
   this.selected = SpeechSynthesis.getVoice(props.voice);
-  this.utterance.voice = this.selected[0] || 'Fiona';
+  this.utterance.voice = this.selected && this.selected.count > 0 ? this.selected[0] : 'Fiona';
   this.utterance.voiceURI = 'Fiona';
   this.utterance.text = props.text.replace(/\n/g, '');
   this.utterance.lang = props.lang || 'en-GB';

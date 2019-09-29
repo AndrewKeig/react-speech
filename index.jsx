@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Speech from './src/speech';
 
-let style = {
+const style = {
   play: {
     button: {
       width: '28',
@@ -17,12 +17,12 @@ let style = {
   }
 };
 
-let mainstyle = {
+const mainstyle = {
   fontFamily: 'Helvetica',
   fontSize: '0.9em',
 }
 
-let textstyle = {
+const textstyle = {
   play: {
     hover: {
       backgroundColor: 'black',
@@ -44,22 +44,22 @@ let textstyle = {
 ReactDom.render(
   <div style={mainstyle}>
   <p>I have the default settings with autostart set to true</p>
-  <Speech 
-    autostart={true} 
+  <Speech
+    autostart={true}
     text="I have the default settings with autostart set to true" />
 
   <p>I have the default settings</p>
-  <Speech 
+  <Speech
     text="I have the default settings" />
 
   <p>I have altered my voice</p>
-  <Speech 
-    text="I have altered my voice" 
+  <Speech
+    text="I have altered my voice"
     voice="Google UK English Female" />
 
   <p>I have changed the colour of the play button and made it smaller</p>
-  <Speech 
-    styles={style} 
+  <Speech
+    styles={style}
     text="I have changed the colour of the play buttons and made them smaller" />
 
   <p>I have altered the pitch, rate and volume of my voice</p>
@@ -83,17 +83,17 @@ ReactDom.render(
   voice="Google UK English Male" />
 
   <p>I have text displayed as a button</p>
-  <Speech 
-    styles={textstyle} 
-    textAsButton={true} 
-    displayText="Hello" 
+  <Speech
+    styles={textstyle}
+    textAsButton={true}
+    displayText="Hello"
     text="I have text displayed as a button" />
 
   <p>I am displaying all buttons</p>
-  <Speech 
-    stop={true} 
-    pause={true} 
-    resume={true} 
+  <Speech
+    stop={true}
+    pause={true}
+    resume={true}
     text="I am displaying all buttons" />
 
   </div>

@@ -1,6 +1,6 @@
 {
   "name": "react-speech",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "React component for the web speech synthesis api",
   "author": {
     "name": "Andrew Keig",
@@ -29,9 +29,8 @@
   },
   "dependencies": {
     "babel-runtime": "^6.3.19",
-    "object-assign": "^4.0.1",
-    "react": "^0.14.6",
-    "react-addons-update": "^0.14.6"
+    "immutability-helper": "^3.0.1",
+    "react": "^0.14.6"
   },
   "devDependencies": {
     "babel": "^6.3.26",

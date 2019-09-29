@@ -1,11 +1,10 @@
-var assign = require('object-assign');
-var React = require('react');
-var update = require('react-addons-update');
-var Button = require('./button');
-var style = require('./style');
-var SpeechSynthesis = require('./speechSynthesis');
+const React = require('react');
+const update = require('immutability-helper');
+const Button = require('./button');
+const style = require('./style');
+const SpeechSynthesis = require('./speechSynthesis');
 
-var Speech = React.createClass({
+const Speech = React.createClass({
   displayName: 'react-speech',
 
   propTypes: {
@@ -34,18 +33,17 @@ var Speech = React.createClass({
 
   componentDidMount: function() {
     this.setButtonState('all', 'none', 'none', 'none');
-
     if (SpeechSynthesis.supported() && this.props.autostart) {
       this.play();
     }
   },
 
   getState: function() {
-    var styles = JSON.parse(JSON.stringify(style));
+    const styles = JSON.parse(JSON.stringify(style));
 
     for (var key in this.props.styles) {
       if (this.props.styles.hasOwnProperty(key)) {
-        styles[key] = assign(styles[key], this.props.styles[key]);
+        styles[key] = Object.assign(styles[key], this.props.styles[key]);
       }
     }
 
@@ -74,7 +72,7 @@ var Speech = React.createClass({
   },
 
   setButtonState: function(play, stop, pause, resume) {
-    var newState = update(this.state, {
+    const newState = update(this.state, {
       styles: {
         play: { button: { pointerEvents: { $set: play } } },
         stop: { button: { pointerEvents: { $set: stop } } },

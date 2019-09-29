@@ -2,11 +2,18 @@
 
 React component for the [Web Speech](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html) api. 
 
+[![react-speech](https://github.com/andrewkeig/react-speech/raw/master/logo.png?sanitize=1)](https://www.npmjs.org/package/react-speech)
+
+[![Current Version](https://flat.badgen.net/npm/v/react-speech?icon=npm)](https://www.npmjs.org/package/react-speech)
+![build](https://travis-ci.org/AndrewKeig/react-speech.svg)
+
+
+
 The Web Speech API aims to enable web developers to provide, in a web browser, `speech-input` and `text-to-speech` output.  
 
 The Web Speech API comes in two parts,  [speech synthesis](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section) and [speech recognition](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechreco-section). This react component supports `speech synthesis`, `text-to-speech`.
 
-![build](https://travis-ci.org/AndrewKeig/react-speech.svg)
+
 
 
 ## React 0.13/0.14
@@ -93,7 +100,7 @@ If you would like to override the default styles, simply pass in a style object.
 
 ```
 
-let style = {
+const style = {
   container: { },
   text: { },
   buttons: { },
@@ -211,7 +218,7 @@ Here are some examples of using `react-speech`
 
 
 ```
-let style = {
+const style = {
   play: {
     button: {
       width: '28',
@@ -275,7 +282,7 @@ let style = {
 
 
 ```
-let textstyle = {
+const textstyle = {
   play: {
     hover: {
       backgroundColor: 'black',
