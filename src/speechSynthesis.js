@@ -1,51 +1,47 @@
+export default class SpeechSynthesis {
+  constructor(props) {
+    this.utterance = new window.SpeechSynthesisUtterance();
+    this.selected = SpeechSynthesis.getVoice(props.voice);
+    this.utterance.voice = this.selected;
+    this.utterance.text = props.text.replace(/\n/g, '');
+    this.utterance.lang = props.lang || 'en-GB';
+    this.utterance.pitch = parseFloat(props.pitch, 10) || 0.8;
+    this.utterance.rate = parseFloat(props.rate, 10) || 1;
+    this.utterance.volume = parseFloat(props.volume, 10) || 1;
+  }
 
-const SpeechSynthesis = function(props){
-  this.utterance = new window.SpeechSynthesisUtterance();
-  this.selected = SpeechSynthesis.getVoice(props.voice);
-  this.utterance.voice = this.selected;
-  this.utterance.text = props.text.replace(/\n/g, '');
-  this.utterance.lang = props.lang || 'en-GB';
-  this.utterance.pitch = parseFloat(props.pitch, 10) || 0.8;
-  this.utterance.rate = parseFloat(props.rate, 10) || 1;
-  this.utterance.volume = parseFloat(props.volume, 10) || 1;
-};
+  static supported(selected) {
+    return window.speechSynthesis;
+  }
 
-SpeechSynthesis.supported = function(selected) {
-  return window.speechSynthesis;
-};
+  static getVoice(selected) {
+    const voices = window.speechSynthesis.getVoices();
+    const voice = voices.find(voice => voice.name === selected);
+    return voice !== undefined ? voice : voices[0];
+  }
 
-SpeechSynthesis.getVoice = function(selected) {
-  const voices = window.speechSynthesis.getVoices();
-  const voice = voices.find(function(voice) {
-    return voice.name === selected;
-  });
+  onend(func) {
+    this.utterance.onend = func;
+  }
 
-  return voice !== undefined ? voice : voices[0];
-};
+  onerror(func) {
+    this.utterance.onerror = func;
+  }
 
-SpeechSynthesis.prototype.onend = function(func) {
-  this.utterance.onend = func;
-};
+  speak() {
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(this.utterance);
+  }
 
-SpeechSynthesis.prototype.onerror = function(func) {
-  this.utterance.onerror = func;
-};
+  pause() {
+    window.speechSynthesis.pause();
+  }
 
-SpeechSynthesis.prototype.speak = function() {
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(this.utterance);
-};
+  cancel() {
+    window.speechSynthesis.cancel();
+  }
 
-SpeechSynthesis.prototype.pause = function() {
-  window.speechSynthesis.pause();
-};
-
-SpeechSynthesis.prototype.cancel = function() {
-  window.speechSynthesis.cancel();
-};
-
-SpeechSynthesis.prototype.resume = function() {
-  window.speechSynthesis.resume();
-};
-
-module.exports = SpeechSynthesis;
+  resume() {
+    window.speechSynthesis.resume();
+  }
+}

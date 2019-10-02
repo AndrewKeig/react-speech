@@ -1,0 +1,433 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Speech Speech on load should render component as default button 1`] = `
+<span
+  className="rs-container"
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  <button
+    className="rs-play"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": "Gainsboro",
+        "border": "solid 1px rgba(255,255,255,1)",
+        "borderRadius": 6,
+        "color": undefined,
+        "cursor": "pointer",
+        "height": "34",
+        "outline": "none",
+        "pointerEvents": "all",
+        "width": "34",
+      }
+    }
+    styles={
+      Object {
+        "button": Object {
+          "backgroundColor": "Gainsboro",
+          "border": "solid 1px rgba(255,255,255,1)",
+          "borderRadius": 6,
+          "cursor": "pointer",
+          "height": "34",
+          "outline": "none",
+          "pointerEvents": "all",
+          "width": "34",
+        },
+        "hover": Object {
+          "backgroundColor": "GhostWhite",
+        },
+      }
+    }
+    type="button"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 5v14l11-7z"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+    </svg>
+  </button>
+   
+   
+   
+</span>
+`;
+
+exports[`Speech Speech on load with all settings should render component with all props 1`] = `
+<span
+  className="rs-container"
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  <button
+    className="rs-play"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": "Gainsboro",
+        "border": "solid 1px rgba(255,255,255,1)",
+        "borderRadius": 6,
+        "color": undefined,
+        "cursor": "pointer",
+        "height": "34",
+        "outline": "none",
+        "pointerEvents": "all",
+        "width": "34",
+      }
+    }
+    styles={
+      Object {
+        "button": Object {
+          "backgroundColor": "Gainsboro",
+          "border": "solid 1px rgba(255,255,255,1)",
+          "borderRadius": 6,
+          "cursor": "pointer",
+          "height": "34",
+          "outline": "none",
+          "pointerEvents": "all",
+          "width": "34",
+        },
+        "hover": Object {
+          "backgroundColor": "GhostWhite",
+        },
+      }
+    }
+    type="button"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 5v14l11-7z"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+    </svg>
+  </button>
+   
+   
+   
+</span>
+`;
+
+exports[`Speech Speech on load with no speech synthesis support should render component as text 1`] = `
+<span
+  className="rs-container"
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  <span
+    className="rs-text"
+    style={
+      Object {
+        "display": "",
+        "width": "100%",
+      }
+    }
+  >
+    hello
+  </span>
+</span>
+`;
+
+exports[`Speech Speech with stop, pause and resume button should render component as default button 1`] = `
+<span
+  className="rs-container"
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  <button
+    className="rs-play"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": "Gainsboro",
+        "border": "solid 1px rgba(255,255,255,1)",
+        "borderRadius": 6,
+        "color": undefined,
+        "cursor": "pointer",
+        "height": "34",
+        "outline": "none",
+        "pointerEvents": "all",
+        "width": "34",
+      }
+    }
+    styles={
+      Object {
+        "button": Object {
+          "backgroundColor": "Gainsboro",
+          "border": "solid 1px rgba(255,255,255,1)",
+          "borderRadius": 6,
+          "cursor": "pointer",
+          "height": "34",
+          "outline": "none",
+          "pointerEvents": "all",
+          "width": "34",
+        },
+        "hover": Object {
+          "backgroundColor": "GhostWhite",
+        },
+      }
+    }
+    type="button"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 5v14l11-7z"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+    </svg>
+  </button>
+   
+  <button
+    className="rs-stop"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": "Gainsboro",
+        "border": "solid 1px rgba(255,255,255,1)",
+        "borderRadius": 6,
+        "color": undefined,
+        "cursor": "pointer",
+        "height": "34",
+        "outline": "none",
+        "pointerEvents": "none",
+        "width": "34",
+      }
+    }
+    styles={
+      Object {
+        "button": Object {
+          "backgroundColor": "Gainsboro",
+          "border": "solid 1px rgba(255,255,255,1)",
+          "borderRadius": 6,
+          "cursor": "pointer",
+          "height": "34",
+          "outline": "none",
+          "pointerEvents": "none",
+          "width": "34",
+        },
+        "hover": Object {
+          "backgroundColor": "GhostWhite",
+        },
+      }
+    }
+    type="button"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+      <path
+        d="M6 6h12v12H6z"
+      />
+    </svg>
+  </button>
+   
+  <button
+    className="rs-pause"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": "Gainsboro",
+        "border": "solid 1px rgba(255,255,255,1)",
+        "borderRadius": 6,
+        "color": undefined,
+        "cursor": "pointer",
+        "height": "34",
+        "outline": "none",
+        "pointerEvents": "none",
+        "width": "34",
+      }
+    }
+    styles={
+      Object {
+        "button": Object {
+          "backgroundColor": "Gainsboro",
+          "border": "solid 1px rgba(255,255,255,1)",
+          "borderRadius": 6,
+          "cursor": "pointer",
+          "height": "34",
+          "outline": "none",
+          "pointerEvents": "none",
+          "width": "34",
+        },
+        "hover": Object {
+          "backgroundColor": "GhostWhite",
+        },
+      }
+    }
+    type="button"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+    </svg>
+  </button>
+   
+  <button
+    className="rs-resume"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": "Gainsboro",
+        "border": "solid 1px rgba(255,255,255,1)",
+        "borderRadius": 6,
+        "color": undefined,
+        "cursor": "pointer",
+        "height": "34",
+        "outline": "none",
+        "pointerEvents": "none",
+        "width": "34",
+      }
+    }
+    styles={
+      Object {
+        "button": Object {
+          "backgroundColor": "Gainsboro",
+          "border": "solid 1px rgba(255,255,255,1)",
+          "borderRadius": 6,
+          "cursor": "pointer",
+          "height": "34",
+          "outline": "none",
+          "pointerEvents": "none",
+          "width": "34",
+        },
+        "hover": Object {
+          "backgroundColor": "GhostWhite",
+        },
+      }
+    }
+    type="button"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+    </svg>
+  </button>
+</span>
+`;
+
+exports[`Speech Speech with text as button should render component as default button 1`] = `
+<span
+  className="rs-container"
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  <button
+    className="rs-play"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": "Gainsboro",
+        "border": "solid 1px rgba(255,255,255,1)",
+        "borderRadius": 6,
+        "color": undefined,
+        "cursor": "pointer",
+        "height": "34",
+        "outline": "none",
+        "pointerEvents": "all",
+        "width": "34",
+      }
+    }
+    styles={
+      Object {
+        "button": Object {
+          "backgroundColor": "Gainsboro",
+          "border": "solid 1px rgba(255,255,255,1)",
+          "borderRadius": 6,
+          "cursor": "pointer",
+          "height": "34",
+          "outline": "none",
+          "pointerEvents": "all",
+          "width": "34",
+        },
+        "hover": Object {
+          "backgroundColor": "GhostWhite",
+        },
+      }
+    }
+    type="button"
+  >
+    <span
+      className="rs-text"
+      style={
+        Object {
+          "display": "",
+          "width": "100%",
+        }
+      }
+    >
+      hello
+    </span>
+  </button>
+   
+   
+   
+</span>
+`;

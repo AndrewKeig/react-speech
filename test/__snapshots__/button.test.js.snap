@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Button on load should render component 1`] = `
+<button
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  style={
+    Object {
+      "backgroundColor": "Gainsboro",
+      "border": "solid 1px rgba(255,255,255,1)",
+      "borderRadius": 6,
+      "color": undefined,
+      "cursor": "pointer",
+      "height": "34",
+      "outline": "none",
+      "pointerEvents": "none",
+      "width": "34",
+    }
+  }
+  styles={
+    Object {
+      "button": Object {
+        "backgroundColor": "Gainsboro",
+        "border": "solid 1px rgba(255,255,255,1)",
+        "borderRadius": 6,
+        "cursor": "pointer",
+        "height": "34",
+        "outline": "none",
+        "pointerEvents": "none",
+        "width": "34",
+      },
+      "hover": Object {
+        "backgroundColor": "GhostWhite",
+      },
+    }
+  }
+  type="button"
+/>
+`;

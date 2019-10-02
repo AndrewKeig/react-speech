@@ -80,7 +80,6 @@ Here is the full API for the `<Speech>` component, these properties can be set o
 Property | Type | Default | Required | Description
 -------- | ---- | ------- | -------- |-----------
 styles | `Object` | [Styles](#Styles) | no | see [Styles](#styles)
-autostart | `Bool` | false | no | Start speech on page load.
 text | `String` | none | yes | This attribute specifies the text to be synthesized and spoken for this utterance. Max `250` characters. See [Issues with long text](#user-content-issues-with-long-text)
 pitch | `Number` | 1 | no | This attribute specifies the speaking pitch for the utterance. `min=0 max=2 step=1`
 rate | `Number` | 1 | no | This attribute specifies the speaking rate for the utterance. `max=3.5 min=0.5 step=0.5`
@@ -194,17 +193,6 @@ Here are some examples of using `react-speech`
 
 ```
 
-
-#### Autostart speech
-
-
-```
-<Speech 
-  autostart={false} 
-  text="I have the default settings with autostart set to true" />
-
-```
-
 #### Altered my voice
 
 
@@ -243,7 +231,6 @@ const style = {
 
 ```
 <Speech
-  autostart={false}
   text="I have altered the pitch, rate and volume of my voice"
   pitch="0.5"
   rate="0.5"
@@ -257,7 +244,6 @@ const style = {
 
 ```
 <Speech
-  autostart={false}
   text="I have all properties set to their default"
   pitch="1"
   rate="1"
