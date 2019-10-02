@@ -9,19 +9,15 @@
   },
   "main": "dist/react-speech.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack --progress --colors --optimize-minimize --optimize-occurence-order --optimize-dedupe --mode production --config webpack.build.config.js",
     "start": "webpack-dev-server --open --mode development",
     "fix": "prettier --write 'src/**/*.js'",
     "lint": "eslint ./src/*.js",
-    "-test": "./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
-    "-lint": "eslint ./src/speech.js",
-    "-start": "npm run lint && node index.js",
-    "-dist": "./node_modules/.bin/webpack --progress --colors --config webpack/dist.config.js",
-    "-dist.min": "./node_modules/.bin/webpack --progress --colors --optimize-minimize --optimize-occurence-order --optimize-dedupe --config webpack/dist.config.min.js",
-    "-build": "npm run dist && npm run dist.min",
-    "-fix1": "prettier --write 'src/**/*.js'",
+    "coverage": "jest --coverage",
     "test": "jest --verbose",
-    "-coverage1": "jest --coverage"
+    "1dist": "./node_modules/.bin/webpack --progress --colors --config webpack/dist.config.js",
+    "1dist.min": "./node_modules/.bin/webpack --progress --colors --optimize-minimize --optimize-occurence-order --optimize-dedupe --config webpack/dist.config.min.js",
+    "1build1": "npm run dist && npm run dist.min"
   },
   "repository": {
     "type": "git",
@@ -36,8 +32,7 @@
   },
   "dependencies": {
     "immutability-helper": "^3.0.1",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1"
+    "react": "^16.10.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -60,6 +55,7 @@
     "jest": "^24.9.0",
     "prettier": "^1.17.1",
     "prop-types": "^15.7.2",
+    "react-dom": "^16.10.1",
     "react-test-renderer": "^16.10.1",
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9",
