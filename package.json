@@ -14,10 +14,7 @@
     "fix": "prettier --write 'src/**/*.js'",
     "lint": "eslint ./src/*.js",
     "coverage": "jest --coverage",
-    "test": "jest --verbose",
-    "1dist": "./node_modules/.bin/webpack --progress --colors --config webpack/dist.config.js",
-    "1dist.min": "./node_modules/.bin/webpack --progress --colors --optimize-minimize --optimize-occurence-order --optimize-dedupe --config webpack/dist.config.min.js",
-    "1build1": "npm run dist && npm run dist.min"
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",

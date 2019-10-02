@@ -29,7 +29,9 @@ describe('Speech', () => {
     });
 
     it('should render component as default button', () => {
-      const tree = renderer.create(<Speech text="hello" textAsButton={true} />).toJSON();
+      const tree = renderer
+        .create(<Speech text="hello" textAsButton={true} />)
+        .toJSON();
       expect(tree).toMatchSnapshot();
     });
   });
@@ -41,7 +43,9 @@ describe('Speech', () => {
     });
 
     it('should render component as default button', () => {
-      const tree = renderer.create(<Speech text="hello" stop={true} pause={true} resume={true} />).toJSON();
+      const tree = renderer
+        .create(<Speech text="hello" stop={true} pause={true} resume={true} />)
+        .toJSON();
       expect(tree).toMatchSnapshot();
     });
   });

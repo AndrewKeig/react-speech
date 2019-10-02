@@ -1,5 +1,3 @@
-
-
 module.exports = function() {
   var speechSynthesis = {
     speaking: false,
@@ -7,7 +5,10 @@ module.exports = function() {
   };
 
   speechSynthesis.getVoices = function() {
-    return [{ name: "Google UK English Male" }, { name: "Google UK English Female" }];
+    return [
+      { name: 'Google UK English Male' },
+      { name: 'Google UK English Female' }
+    ];
   };
 
   speechSynthesis.speak = function() {
@@ -32,6 +33,7 @@ module.exports = function() {
 
   global.window.speechSynthesis = speechSynthesis;
 
-
-  global.window.SpeechSynthesisUtterance = function() { return {}; };
-}
+  global.window.SpeechSynthesisUtterance = function() {
+    return {};
+  };
+};
