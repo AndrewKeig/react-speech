@@ -14,14 +14,6 @@ The Web Speech API aims to enable web developers to provide, in a web browser, `
 The Web Speech API comes in two parts,  [speech synthesis](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section) and [speech recognition](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechreco-section). This react component supports `speech synthesis`, `text-to-speech`.
 
 
-
-
-## React 0.13/0.14
-If you are using React 0.14, please use a version >= 0.3.0 of react-speech.
-
-Please use a version of react-speech before 0.3.0 for react 0.13.
-
-
 ## Install
 
 In order to install `react-speech`, simply run
@@ -36,40 +28,12 @@ Using `react-speech`, is pretty simple, simply `React.render` the speech compone
 
 ```
   import React from 'react';
-  import Speech from './speech';
+  import Speech from 'react-speech';
 
   React.render(
     <Speech text="Welcome to react speech" />,
     document.getElementById('node')
   );
-
-```
-
-Here is a standalone version.
-
-```
-<html>
-  <head>
-    <title>React Speech</title>
-  </head>
-  <body>
-    <div>
-      <div id="app"></div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
-    <script src="../dist/react-speech.min.js"></script>
-
-    <script type="text/jsx">
-      var Speech = ReactSpeech;
-
-      React.render(
-        <Speech text="I have the default settings" />,
-        document.getElementById('app')
-      );
-    </script>
-  </body>
-</html>
 
 ```
 

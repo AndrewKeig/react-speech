@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Speech from './src/speech';
+import Speech from './dist/react-speech.min';
 
 const style = {
     container: {
