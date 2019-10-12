@@ -1,6 +1,6 @@
 {
   "name": "react-speech",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component for the web speech synthesis api",
   "author": {
     "name": "Andrew Keig",
