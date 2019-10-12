@@ -1,13 +1,13 @@
 {
   "name": "react-speech",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React component for the web speech synthesis api",
   "author": {
     "name": "Andrew Keig",
     "email": "andrew.keig@gmail.com",
     "url": "http://github.com/andrewkeig"
   },
-  "main": "dist/react-speech.js",
+  "main": "dist/react-speech.min.js",
   "scripts": {
     "build": "webpack --progress --colors --optimize-minimize --optimize-occurence-order --optimize-dedupe --mode production --config webpack.build.config.js",
     "start": "webpack-dev-server --open --mode development",
