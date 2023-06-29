@@ -1,7 +1,7 @@
 export default class SpeechSynthesis {
   constructor(props) {
     this.utterance = new window.SpeechSynthesisUtterance();
-    this.selected = SpeechSynthesis.getVoice(props.voice);
+    this.selected = SpeechSynthesis.getVoice(props.voice, props.lang || 'en-GB');
     this.utterance.voice = this.selected;
     this.utterance.text = props.text.replace(/\n/g, '');
     this.utterance.lang = props.lang || 'en-GB';
@@ -14,9 +14,9 @@ export default class SpeechSynthesis {
     return window.speechSynthesis;
   }
 
-  static getVoice(selected) {
+  static getVoice(name, lang) {
     const voices = window.speechSynthesis.getVoices();
-    const voice = voices.find(voice => voice.name === selected);
+    const voice = voices.find(voice => voice.name === name && voice.lang===lang);
     return voice !== undefined ? voice : voices[0];
   }
 
